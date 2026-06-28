@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import {
-  Menu, X, Home, HelpCircle, Share2, Heart,
+  Menu, X, Home, HelpCircle, Share2, CreditCard,
   Info, Settings, Globe, Sparkles,
 } from 'lucide-react';
-import { PREMIUM_CONFIG } from '../config/premium';
 import { useT } from '../i18n';
 
 interface HeaderMenuProps {
@@ -63,11 +62,6 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
     } catch { /* ignore */ }
   }
 
-  function handleDonate() {
-    setOpen(false);
-    window.open(PREMIUM_CONFIG.paypalUrl, '_blank', 'noopener,noreferrer');
-  }
-
   const items: MenuItem[] = [
     {
       icon: <Home className="w-4 h-4" />,
@@ -86,16 +80,16 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
       action: handleShare,
     },
     {
-      icon: <Heart className="w-4 h-4" />,
+      icon: <CreditCard className="w-4 h-4" />,
       label: t.menu.donate,
-      action: handleDonate,
+      action: () => go('/premium'),
+      accent: true,
       dividerAfter: true,
     },
     {
       icon: <Sparkles className="w-4 h-4" />,
       label: t.menu.premium,
       action: () => go('/premium'),
-      accent: true,
     },
     {
       icon: <Settings className="w-4 h-4" />,
@@ -116,7 +110,6 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
 
   return (
     <div ref={menuRef} className="relative">
-      {/* Bouton hamburger */}
       <button
         onClick={() => setOpen(v => !v)}
         aria-label={open ? t.aria.closeMenu : t.aria.openMenu}
@@ -135,7 +128,6 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
         }
       </button>
 
-      {/* Dropdown */}
       {open && (
         <div
           className="absolute right-0 top-10 w-52 rounded-2xl py-2 z-50 animate-slide-up"
