@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Share2, Check } from 'lucide-react';
 import type { ComboResult, Die } from '../types/game';
 import type { Persona } from '../types/personas';
 import { FACE_SYMBOL_LABELS, FACE_DISPLAY_COLOR } from './Dice';
@@ -23,6 +23,15 @@ const AVATAR_GRADIENT: Record<string, string> = {
   'gerard-bis':  'from-slate-600 to-slate-700',
 };
 
+const SHARE_HEADINGS: Record<string, string> = {
+  feuch: '⚠️ Document déclassifié',
+  natasha: '📺 Bulletin confidentiel',
+  gerard: '📬 Courrier égaré',
+  'gerard-bis': '📬 Courrier égaré',
+  marty: '📦 Livraison spéciale',
+  'fee-belette': '🍃 Rapport retrouvé dans la forêt',
+};
+
 const INTENSITY_LABEL: Record<number, string> = { 1: '●', 2: '● ●', 3: '● ● ●' };
 const INTENSITY_COLOR: Record<number, string> = {
   1: 'text-violet-400',
@@ -42,7 +51,7 @@ const PARTICLE_CONFIGS = [
 ];
 
 export function ResultModal({ result, dice, persona, comment, onNewRound, onClose }: ResultModalProps) {
-  const [copied, setCopied] = useState(false);
+  const [shareState, setShareState] = useState<'idle' | 'shared' | 'copied'>('idle');
   const cardRef = useRef<HTMLDivElement>(null);
   const isJackpot = result.type === 'jackpot';
   const { t } = useT();
@@ -70,12 +79,36 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  async function handleCopy() {
+  function buildShareText() {
+    const heading = persona ? (SHARE_HEADINGS[persona.id] ?? SHARE_HEADINGS.feuch) : SHARE_HEADINGS.feuch;
+    const annotation = comment ? `\nAnnotation :\n« ${comment} »\n` : '';
+    return `${heading}\n\n🧪 Feuch Institute\nExpérience 420\n\n🎲 ${result.title}\n\n${result.text}\n${annotation}\n━━━━━━━━━━━━━━━━━━\nRejoins l'expérience :\nhttps://benoitlub.github.io/420-dice-game-reboot/`;
+  }
+
+  async function fallbackCopy(text: string) {
+    await navigator.clipboard.writeText(text);
+    setShareState('copied');
+    setTimeout(() => setShareState('idle'), 2200);
+  }
+
+  async function handleShare() {
+    const shareText = buildShareText();
     try {
-      await navigator.clipboard.writeText(`${result.title}\n\n${result.text}`);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-    } catch { /* ignore */ }
+      if (navigator.share) {
+        await navigator.share({
+          title: '420 Dice Game — Feuch Institute',
+          text: shareText,
+        });
+        setShareState('shared');
+      } else {
+        await fallbackCopy(shareText);
+        return;
+      }
+      setTimeout(() => setShareState('idle'), 2200);
+    } catch (error) {
+      if ((error as DOMException)?.name === 'AbortError') return;
+      try { await fallbackCopy(shareText); } catch { /* ignore */ }
+    }
   }
 
   const avatarGradient = persona
@@ -98,7 +131,6 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
           isJackpot ? 'card-glass-jackpot' : 'card-glass',
         ].join(' ')}
       >
-        {/* ─── Particules victoire ─────────────────────────────────── */}
         {isJackpot && (
           <div
             className="absolute inset-0 pointer-events-none overflow-hidden rounded-t-3xl sm:rounded-3xl"
@@ -118,17 +150,14 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
           </div>
         )}
 
-        {/* Drag handle mobile */}
         <div className="flex justify-center pt-3 sm:hidden">
           <div className="w-10 h-1 rounded-full bg-white/20" />
         </div>
 
-        {/* ─── Bandeau supérieur ─────────────────────────────────────── */}
         <div className={[
           'px-5 pt-4 pb-4 flex-shrink-0 relative overflow-hidden border-b',
           isJackpot ? 'border-fuchsia-500/30' : 'border-white/10',
         ].join(' ')}>
-
           <div className={[
             'absolute inset-0 pointer-events-none',
             isJackpot
@@ -143,7 +172,6 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
               : 'bg-gradient-to-r from-transparent via-violet-500/40 to-transparent',
           ].join(' ')} />
 
-          {/* Dés récapitulatifs */}
           <div className="relative flex items-center gap-2 mb-3">
             {dice.map(die => (
               <span
@@ -175,7 +203,6 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
             </div>
           </div>
 
-          {/* Jackpot badge */}
           {isJackpot && (
             <div className="relative flex items-center gap-2 mb-2">
               <span className="text-2xl animate-victory" style={{ filter: 'drop-shadow(0 0 12px rgba(251,191,36,.8))' }}>
@@ -203,7 +230,6 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
           </h2>
         </div>
 
-        {/* ─── Corps scrollable ────────────────────────────────────── */}
         <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-4 space-y-4 min-h-0">
           <p data-testid="result-text" className="text-white/90 text-base leading-relaxed">
             {result.text}
@@ -232,7 +258,6 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
           )}
         </div>
 
-        {/* ─── Footer boutons ───────────────────────────────────────── */}
         <div className="flex-shrink-0 px-5 pb-6 pt-3 border-t border-white/8 space-y-2.5">
           <button
             data-testid="button-new-round"
@@ -246,12 +271,14 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
           </button>
 
           <button
-            onClick={handleCopy}
+            onClick={handleShare}
             className="w-full py-2.5 rounded-xl text-sm font-semibold border border-white/12 bg-white/[.04] text-white/60 hover:border-violet-400/40 hover:text-white/80 transition-all duration-150 flex items-center justify-center gap-2"
           >
-            {copied
-              ? <><Check className="w-3.5 h-3.5 text-green-400" /> {t.result.copied}</>
-              : <><Copy  className="w-3.5 h-3.5" /> {t.result.copy}</>
+            {shareState === 'shared'
+              ? <><Check className="w-3.5 h-3.5 text-green-400" /> {t.result.shared}</>
+              : shareState === 'copied'
+                ? <><Check className="w-3.5 h-3.5 text-green-400" /> {t.result.copied}</>
+                : <><Share2 className="w-3.5 h-3.5" /> {t.result.share}</>
             }
           </button>
         </div>
