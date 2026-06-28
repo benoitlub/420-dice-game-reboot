@@ -1,0 +1,222 @@
+{
+  "id": "adolescents",
+  "title": "Mission Adolescents (Soft)",
+  "description": "Pour ados — TikTok, gaming, amitiés et premières fois (soft)",
+  "tone": "Fun et approprié pour ados",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — Jackpot Génération Z !",
+      "text": "Tu es officiellement la personne la plus swag de la tablée. Tu poses la prochaine règle du jeu et personne ne peut la contester.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "Le 420 ! C'est no cap le meilleur moment de la soirée !"
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Crush Soft",
+      "text": "Avoue (anonymement si tu veux) si tu as un crush en ce moment. Juste oui ou non. Le groupe ne peut poser qu'une question.",
+      "intensity": 1,
+      "type": "triple",
+      "characterComment": "Trois coeurs ! Quelqu'un est en mode simp ce soir !"
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Brainrot Total",
+      "text": "Récite le mème internet le plus bizarre dont tu te souviens. Le groupe vote si c'est vraiment un mème ou si tu l'as inventé.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Trois nuages... Le brainrot a atteint le niveau maximum."
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Triple Interdit Ado",
+      "text": "Révèle quelque chose que tu fais et que tes parents pensent ne pas savoir. Rien de grave — juste un secret banal d'ado.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Triple interdit. Les parents sont sur écoute, mais là c'est safe."
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Trio Gaming",
+      "text": "Nomme le trio de personnages qui te représente le mieux dans la vie : un héros de jeu vidéo, un personnage de série, et toi.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Triple Doublon TikTok",
+      "text": "Tu as 20 secondes pour faire un TikTok imaginaire. Trend, musique, texte à l'écran — tu mimes tout. Le groupe commente.",
+      "intensity": 2,
+      "type": "triple"
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "Mode Avion Total",
+      "text": "Sans portable, sans réseau. Raconte quelque chose d'intéressant sur ta vraie vie (pas via un écran) pendant 30 secondes.",
+      "intensity": 1,
+      "type": "triple"
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "Ship Interdit",
+      "text": "Le groupe choisit deux personnes à table ou deux célébrités et tu dois décrire leur couple en 3 mots.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Crush Level Up",
+      "text": "Invente le nom de code parfait pour parler de ton crush sans que personne comprenne. Le groupe essaie de deviner le principe.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "École Interdite",
+      "text": "Raconte la chose la plus absurde qu'un prof t'ait jamais dite ou fait faire. 30 secondes, maximum de détails.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "2", "heart"],
+      "title": "Tier List Amis",
+      "text": "Fais la tier list des personnes à table de S à D pour la catégorie 'meilleur(e) ami(e) de road trip'. Explique le classement.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "cloud"],
+      "title": "Quatre Zéro Gaming",
+      "text": "Décris ton gaming setup idéal si l'argent n'existait pas. Chaque élément doit avoir une justification précise.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "4"],
+      "title": "Double Heart React",
+      "text": "Fais la réaction la plus dramatique possible à 'bonne nouvelle' imaginaire. Le groupe doit rester impassible.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "2"],
+      "title": "Double Like",
+      "text": "Envoie un compliment sincère par message à quelqu'un qui n'est pas à table (et montre-le au groupe).",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "4"],
+      "title": "Brainrot Quatre",
+      "text": "Explique le mème 'I forgor' à quelqu'un à table qui dit ne pas le connaître. En 20 secondes.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "2"],
+      "title": "Double Brainrot",
+      "text": "Imite un influenceur fictif qui vend quelque chose d'absolument inutile. Includes une promo code inventé.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "4"],
+      "title": "Double Interdit Gaming",
+      "text": "Confesse le game sur lequel tu as passé le plus de temps et que tu n'avoues jamais parce que c'est embarrassant.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "2"],
+      "title": "Règle Non Écrite",
+      "text": "Révèle une règle non-écrite de votre groupe d'amis que tout le monde connaît mais que personne ne dit jamais.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "cloud", "heart"],
+      "title": "Aesthetic Check",
+      "text": "Décris ton aesthetic en 3 mots (core, vibe, feeling). Le groupe vote si ça te correspond.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "heart", "cloud"],
+      "title": "Parasocial Level",
+      "text": "Confesse ton niveau de parasocialité avec une célébrité ou un/une streamer. Le groupe te note de 1 à 10 en inquiétude.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "heart", "cloud"],
+      "title": "Zéro Réseau",
+      "text": "Pendant 5 minutes, tu ne touches plus ton téléphone. Si tu tiens, le groupe t'offre un gage de ton choix.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "prohibited", "0"],
+      "title": "Speed Run Scolaire",
+      "text": "Speed-run la révision d'une matière au choix du groupe. 30 secondes pour tout résumer. Note sur 20.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "cloud"],
+      "title": "Deux Zéro Stream",
+      "text": "Pitch une idée de stream absolument nulle. Le groupe est ton chat et commente en live.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "0", "prohibited"],
+      "title": "Première Fois Soft",
+      "text": "Raconte la première fois que tu as réalisé que tu aimais vraiment un truc — musique, sport, jeu vidéo, série. Sois précis(e).",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "4", "heart"],
+      "title": "Double Quatre Ship",
+      "text": "Invente un fandom et son nom pour le ship de deux personnes à table. Le groupe vote si ça tient la route.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "0", "cloud"],
+      "title": "Zéro Réseau Cloud",
+      "text": "Décris ta journée parfaite sans aucun écran. Sois honnête sur si c'est possible pour toi.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "0", "heart"],
+      "title": "Soft Life",
+      "text": "Décris ta vibe en ce moment avec exactement 5 émojis. Pas plus, pas moins. Le groupe les interprète.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "4", "heart"],
+      "title": "Deux Quatre Coeur",
+      "text": "Dis merci à la personne à ta droite pour quelque chose de précis qu'elle a fait cette année. Sincèrement.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "4", "cloud"],
+      "title": "Zéro Quatre Cloud",
+      "text": "Présente ton alter ego fictif en 30 secondes. Nom, pouvoirs, faiblesses, et son ennemie principale.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "4", "0"],
+      "title": "Coeur Quatre Zéro",
+      "text": "Écris le Tweet / post parfait qui résume cette soirée. Le groupe retweete ou non à main levée.",
+      "intensity": 1,
+      "type": "standard"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "fee-belette",
+  "name": "Fée Belette",
+  "avatar": "B",
+  "lines": {
+    "jackpot": [
+      "Les étoiles s'alignent, la rivière chante, et tu as trouvé le 420. C'était écrit.",
+      "Le grand arbre de la fortune secoue ses branches d'or ce soir. Tu en es la feuille choisie.",
+      "Dans mon grimoire, il est dit : quand les trois nombres s'unissent, le monde tourne dans le bon sens.",
+      "Le 420. La lune l'avait prédit. Je l'avais prédit. Nous avions tous prédit.",
+      "Tu n'as pas lancé les dés — les dés t'ont choisi(e)."
+    ],
+    "failure": [
+      "Le brouillard se dissipe rarement du premier souffle. Patience, voyageur(euse).",
+      "La forêt enchantée a dit non ce soir. Mais la forêt enchantée peut se raviser.",
+      "Dans les contes, le héros échoue toujours avant de triompher. Tu es au bon chapitre.",
+      "Les esprits de la chance se reposent. Ils reviennent. Toujours.",
+      "Un non des dés n'est qu'un oui en retard."
+    ],
+    "funnyCombo": [
+      "Cette combinaison ne figure dans aucun de mes livres. Elle existe maintenant grâce à toi.",
+      "Les belettes ont un sens de l'humour très particulier. Les dés aussi ce soir.",
+      "La magie prend parfois des formes... inattendues. C'est ce qui la rend magique.",
+      "Je consulte mes runes... elles disent : 'intéressant'. Très intéressant.",
+      "Le destin a un sens de l'esthétique discutable. Mais il a toujours une raison."
+    ],
+    "tripleSymbol": [
+      "Trois fois le même symbole. Les trois lunes sont alignées ce soir.",
+      "Un triple ! Dans la tradition des belettes mystiques, c'est un signe puissant.",
+      "L'univers insiste. Quand il répète trois fois, il faut écouter.",
+      "Triple symbole. La forêt tremble. Doucement. Avec joie.",
+      "Les trois gardiens du symbole s'inclinent devant toi."
+    ],
+    "reroll": [
+      "Lance encore. La rivière n'a pas dit son dernier mot.",
+      "Un autre souffle sur les dés. Le vent porte tes voeux.",
+      "Tu as encore du chemin à faire dans cette forêt. Continue.",
+      "Les dés restent ouverts à la négociation. Reprends-les.",
+      "Chaque lancer est une prière aux dieux du hasard. Prie encore."
+    ],
+    "lockDie": [
+      "Ce dé, tu le gardes. Il appartient à ton destin maintenant.",
+      "Verrouillé dans l'ambre de la magie. Il ne bougera plus.",
+      "Tu as reconnu sa valeur. C'est un signe de sagesse ancienne.",
+      "Le dé est protégé. Sous le charme de tes intentions.",
+      "Sage décision. La belette approuve. Et la belette sait."
+    ]
+  }
+}

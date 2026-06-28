@@ -1,0 +1,49 @@
+{
+  "id": "natasha",
+  "name": "Natasha",
+  "avatar": "N",
+  "lines": {
+    "jackpot": [
+      "Oh là là ! Le 420 ! Je savais que tu étais spécial(e).",
+      "C'est historique ! Quelqu'un note ça s'il vous plaît ?",
+      "Mon Dieu ! Même moi je n'aurais pas fait mieux !",
+      "Incroyable. Je suis sans voix. Ce qui est rare, comme tu sais.",
+      "Le 420 ! Enfin ! J'attendais ça depuis le début de la soirée."
+    ],
+    "failure": [
+      "Bon... On ne peut pas gagner à chaque fois.",
+      "C'est la vie, chéri(e). Next time.",
+      "Allez, c'est pas grave ! (si un peu quand même)",
+      "Tu avais pourtant l'air si confiant(e)...",
+      "Personne ne dit rien. On passe à la suite dignement."
+    ],
+    "funnyCombo": [
+      "Pfff j'adore ! Cette combo c'est tellement toi.",
+      "Sérieusement ? C'est la combo la plus bizarre que j'aie jamais vue.",
+      "Ha ! Je ne m'y attendais pas. Personne ne s'y attendait.",
+      "Le destin a un sens de l'humour très particulier ce soir.",
+      "J'ai vu des choses dans ma vie, mais ça... ça me laisse perplexe."
+    ],
+    "tripleSymbol": [
+      "TRIPLE ! Je frissonne !",
+      "Trois fois le même... Tu es soit béni(e) soit maudit(e).",
+      "Wow. Juste... wow.",
+      "Le triple symbole. Les anciens parlaient de ça à voix basse.",
+      "Trophée potentiel ! La table retiendra son souffle."
+    ],
+    "reroll": [
+      "Encore un lancer. L'espoir est une belle chose.",
+      "T'as encore une chance, utilise-la bien.",
+      "Allez, dernière tentative. Je croise les doigts pour toi.",
+      "Un dernier lancer. Tout peut encore arriver.",
+      "Concentre-toi. Visualise le 420. Maintenant lance."
+    ],
+    "lockDie": [
+      "Bonne décision. Garde ça bien au chaud.",
+      "Sage. Très sage.",
+      "Je valide ce choix à 100%.",
+      "Un dé verrouillé, c'est un avenir maîtrisé.",
+      "On garde. On sécurise. On domine."
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "id": "apero",
+  "title": "Mission Apéro",
+  "description": "Légèreté totale entre amis autour d'un verre",
+  "tone": "Festif et détendu",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — Jackpot Apéro !",
+      "text": "Tu es le/la Maître(sse) de l'Apéro ce soir. Tu décides de la prochaine tournée imaginaire et tu portes un toast à thème.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "LE 420 ! On débouche le champagne imaginaire !"
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Tchin",
+      "text": "Porte un toast sincère à quelque chose ou quelqu'un de ta vie en ce moment. Tout le monde trinque avec toi.",
+      "intensity": 1,
+      "type": "triple"
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Brouillard d'Apéro",
+      "text": "Tout le monde doit inventer un nom de cocktail fictif avec une description prétentieuse de bistrot. Le meilleur gagne le prestige.",
+      "intensity": 2,
+      "type": "triple"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Interdit de Table",
+      "text": "Chacun avoue la chose qu'il mange ou boit et qu'il sait pertinemment être mauvais pour lui — mais continue.",
+      "intensity": 2,
+      "type": "triple"
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Trois Tournées",
+      "text": "Tu commandes une tournée imaginaire de ton choix pour toute la table. Chaque personne doit deviner ce qu'elle a reçu.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Double Mise",
+      "text": "Lance un pari apéro : tu prétends que quelque chose arrivera avant la fin de la soirée. Le groupe mise.",
+      "intensity": 1,
+      "type": "triple"
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "Le Silence de l'Apéro",
+      "text": "15 secondes sans bruit. Personne ne mange, ne boit, ne parle. Juste... l'ambiance.",
+      "intensity": 1,
+      "type": "triple"
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "L'Invite Surprise",
+      "text": "Invente un invité imaginaire pour cette soirée. Célébrité, personnage historique ou fictif. Il arrive dans 5 minutes. Réagis.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Quatre Coeurs Apéro",
+      "text": "Décris le snack parfait pour regarder un film. Sois précis : marque, texture, température, accompagnement.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "Règle Maison",
+      "text": "Invente une règle de jeu absurde qui s'applique jusqu'à la prochaine tournée. Le groupe vote si elle est adoptée.",
+      "intensity": 1,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "2", "heart"],
+      "title": "Quatre-Deux Sincère",
+      "text": "Dis à voix haute ce que tu penses être le meilleur apéro de ta vie. Avec qui, quand, où et pourquoi.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "2", "cloud"],
+      "title": "Pitch Snack",
+      "text": "Pitch un snack inventé à une marque fictive. Ingrédients, nom, slogan et cible marketing. 30 secondes.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "cloud"],
+      "title": "Quatre Nuage Apéro",
+      "text": "Imite un sommelier qui décrit avec sérieux un verre... de jus de fruits du commerce. Sans rire.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "4"],
+      "title": "Double Amour Apéro",
+      "text": "Fais un discours de 20 secondes pour ta boisson préférée. Comme si tu la défendais devant le Parlement européen.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "2"],
+      "title": "Apéro Confessions",
+      "text": "Confesse la chose la plus invraisemblable que tu aies commandée dans un bar et regrettée au premier verre.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "4"],
+      "title": "Brouillard Gourmet",
+      "text": "Invente un restaurant dont le concept entier est basé sur un ingrédient bizarre. Nom, carte, ambiance.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "2"],
+      "title": "Double Brouillard Apéro",
+      "text": "Présente le plateau de fromages imaginaire parfait. Avec les noms inventés, les régions fictives et les accords conseillés.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "4"],
+      "title": "Double Interdit Gourmet",
+      "text": "Avoue la combinaison alimentaire inavouable que tu fais en secret et qui te semble parfaite.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "2"],
+      "title": "Double Interdit Apéro",
+      "text": "Invente une règle d'or de l'apéro parfait que tout le monde devrait suivre. Le groupe vote pour ou contre.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "cloud", "heart"],
+      "title": "Maître Sommelier Fictif",
+      "text": "Décris les arômes d'un verre d'eau du robinet comme un grand cru. Terroir, millésime, finale en bouche.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "heart", "cloud"],
+      "title": "Deux Coeurs Apéro",
+      "text": "Qui à table serait le/la meilleur(e) cuisinier(ère) pour improviser avec des restes ? Argumentez.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "heart", "cloud"],
+      "title": "Zéro Coeur Nuage",
+      "text": "Invente le cocktail signature de cette soirée. Nom, ingrédients fictifs, et raison pour laquelle il est parfait pour ce groupe.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "prohibited", "0"],
+      "title": "Apéro Interdit",
+      "text": "Qu'est-ce qui est officiellement banni de l'apéro parfait selon toi ? Défends ta position avec conviction.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "cloud"],
+      "title": "Deux Zéro Apéro",
+      "text": "Décris l'apéro catastrophe que tu organiseras jamais. Lieu, invités, nourriture et fin de soirée.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "0", "prohibited"],
+      "title": "Amour Interdit de Table",
+      "text": "Confesse ta relation amour-haine avec un aliment ou une boisson que tout le monde aime mais que tu ne comprends pas.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "4", "heart"],
+      "title": "Double Quatre Tchin",
+      "text": "Tout le monde porte un toast à un souvenir commun que seuls les gens de cette table comprennent.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "0", "cloud"],
+      "title": "Vide Gourmet",
+      "text": "Décris le repas le plus minimaliste possible qui soit quand même considéré comme 'un repas'. Justifie.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "0", "heart"],
+      "title": "Nuage Apéro",
+      "text": "Invente le nom d'un bar imaginaire dans ta ville. Concept, déco, clientèle type et chanson d'ambiance.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "4", "cloud"],
+      "title": "Deux Quatre Nuage",
+      "text": "Qui à table a les compétences pour survivre avec seulement un couteau suisse, une planche à découper et les restes du frigo ?",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "4", "heart"],
+      "title": "Zéro Quatre Tchin",
+      "text": "Lance un 'qui dans cette pièce' — le groupe pointe du doigt. La plus pointée pour chaque catégorie gagne un gage.",
+      "intensity": 2,
+      "type": "standard"
+    }
+  ]
+}

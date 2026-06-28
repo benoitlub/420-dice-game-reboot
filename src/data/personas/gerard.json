@@ -1,0 +1,49 @@
+{
+  "id": "gerard",
+  "name": "Gérard",
+  "avatar": "G",
+  "lines": {
+    "jackpot": [
+      "Le 420 ! Ah oui oui je connais ça ! C'est comme le loto non ?",
+      "Bravo ! On dirait presque le jeu qu'on faisait à mon époque, mais en version numérique.",
+      "Excellent ! Même si je comprends pas tout à l'interface, là c'est clairement bien !",
+      "Le jackpot ! Comme à la pétanque quand on fait le cochonnet ! C'est pareil je crois.",
+      "Ah mais ça c'est bien ça ! Tu as gagné ! Je le savais depuis le début, je le sentais."
+    ],
+    "failure": [
+      "Bon c'est pas grave. Moi une fois j'ai raté un penalty en finale départementale. On s'en remet.",
+      "T'inquiète. La prochaine sera la bonne. Ou pas. Mais la prochaine.",
+      "Dans mon temps on appelait ça 'pas de chance'. C'est toujours d'actualité.",
+      "Dommage. Mais bon. C'est un jeu hein.",
+      "Ça arrive. Même à Zidane ça arrivait. Enfin... c'est différent. Mais quand même."
+    ],
+    "funnyCombo": [
+      "Ah c'est... original ! Très moderne cette combinaison.",
+      "C'est quoi exactement ce résultat ? Je comprends mais j'ai besoin qu'on me réexplique.",
+      "Mmm. Je suis pas sûr que ça existait de mon temps mais c'est... coloré comme combinaison.",
+      "Ha ha ! Très bien ! C'est un peu comme le 'passe-moi-la-sauce' qu'on jouait à Noël ?",
+      "Intéressant. Je prends note mentalement même si c'est compliqué."
+    ],
+    "tripleSymbol": [
+      "Trois fois pareil ! C'est bien non ? C'est bien.",
+      "Oh là là ! Le triple ! C'est comme un brelan au poker ! Je joue au poker moi parfois.",
+      "Même symbole trois fois... ça doit vouloir dire quelque chose d'important.",
+      "Waouh ! Impressionnant ! Tu mérites une récompense. Une claque dans le dos au moins.",
+      "Triple ! Ma femme serait impressionnée. Enfin si elle comprenait les règles."
+    ],
+    "reroll": [
+      "Allez un autre lancer ! Comme à la pétanque. On est parti.",
+      "Tu relances. Bien. La persévérance c'est une valeur.",
+      "Go ! Comme dirait mon fils. Go c'est ça qu'il dit tout le temps.",
+      "Un lancer de plus. Moi à ton âge j'aurais tout misé là.",
+      "On repart. Courage. C'est ce que j'aurais dit à mon équipe de foot si j'avais eu une équipe."
+    ],
+    "lockDie": [
+      "Tu le gardes ce dé ? Bien. Logique. Stratégie.",
+      "Le dé est bloqué. Comme mon dos depuis l'hiver dernier. Mais dans le bon sens.",
+      "Verrouillé ! C'est comme quand on garde un bon chiffre au scrabble.",
+      "Décision prise. Tu fais bien. La stabilité c'est important.",
+      "Ce dé reste. Je valide. Et je comprends à peu près pourquoi."
+    ]
+  }
+}

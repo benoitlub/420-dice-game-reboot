@@ -1,0 +1,270 @@
+{
+  "id": "pro-hibited",
+  "title": "Pro.Hibited",
+  "description": "L'univers Pro.Hibited — humour, parodie et brouillards créatifs",
+  "tone": "Absurde et parodique",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — Le Brouillard Légendaire",
+      "text": "Jackpot intergalactique. Tu es officiellement désigné(e) Ambassadeur(rice) du Brouillard pour cette soirée. Trophée et immunité accordés.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "LE QUATRE-VINGT ! Je veux dire... LE 420 ! L'air est soudainement très dense ici."
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Coeur Suspect",
+      "text": "Tu dois déclarer ton amour... à ta plante verte favorite imaginaire. Décris-la. Donne-lui un prénom. Le groupe applaudit.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Trois coeurs... Les herbes aromatiques aussi ont des sentiments, paraît-il."
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Brouillard Absolu Total",
+      "text": "Tout le monde ferme les yeux. Chacun décrit à voix haute ce qu'il 'voit' dans ce brouillard intense. Aucune censure.",
+      "intensity": 3,
+      "type": "triple",
+      "characterComment": "Je ne... je ne distingue plus rien. C'est magnifique. Quelqu'un a vu mes clés ?"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Triple Interdit Pro",
+      "text": "Chacun à table doit confesser une chose officiellement interdite dans sa famille mais qu'il fait quand même allègrement.",
+      "intensity": 3,
+      "type": "triple",
+      "characterComment": "Trois fois Pro.Hibited. La soirée vient de changer de dimension légale."
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Quatre-Quatre-Quatre Stratégique",
+      "text": "Présente en 45 secondes ton plan pour 'optimiser la production d'herbes aromatiques sur un balcon parisien'. Inclus un business plan.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Trois fours... quatre fois... Le calcul est flou mais l'ambition est nette."
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Triple Deux — La Règle du Double",
+      "text": "Tout ce que tu fais pendant les 2 prochaines manches, tu dois le faire deux fois. Parler. Boire. Rire. Tout.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Deux fois deux fois deux. Je répète : deux fois deux fois deux."
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "Le Grand Néant Pro",
+      "text": "Silence total et immobile pendant exactement 15 secondes. Celui qui bouge ou parle doit expliquer ses projets de vie.",
+      "intensity": 1,
+      "type": "triple",
+      "characterComment": ".....................zéro bruit....................rien................................"
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "Le Trio Cosmique",
+      "text": "Invente un nom de strain d'herbes médicinales imaginaire, ses propriétés relaxantes supposées, et son prix au gramme fictif.",
+      "intensity": 3,
+      "type": "special",
+      "characterComment": "Amour, brouillard, interdit. La sainte trinité du Pro.Hibited."
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Quatre Coeurs Brumeux",
+      "text": "Mime quelqu'un qui cherche ses clés dans un brouillard intense depuis 20 minutes. Sans parler. Accentue la désorientation.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Je l'ai vu faire ça. C'était... artistique."
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "Deux-Zéro Interdit",
+      "text": "Décris en détail le processus de fabrication d'une cigarette de pâquerettes. Technique. Précis. Comme un cours magistral.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "La science botanique au service de l'art culinaire. Fascinant."
+    },
+    {
+      "faces": ["4", "2", "heart"],
+      "title": "Quatre-Deux Romantique",
+      "text": "Récite un poème d'amour à la plante la plus proche. Si il n'y a pas de plante, désigne un meuble comme partenaire.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "2", "cloud"],
+      "title": "Quatre-Deux Brumeux",
+      "text": "Explique pendant 30 secondes pourquoi les nuages sont en fait 'la gentrification du ciel'. Convaincant, s'il vous plaît.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "2", "prohibited"],
+      "title": "Quatre-Deux Interdit",
+      "text": "Fonde une association imaginaire pro-brouillard. Nom, mission, slogan et adhésion mensuelle. En 30 secondes.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "cloud"],
+      "title": "Quatre Brume Zéro",
+      "text": "Tu dois parler de ta passion imaginaire pour la 'culture raisonnée de champignons de forêt' pendant 45 secondes avec enthousiasme.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "prohibited"],
+      "title": "Quatre Zéro Interdit",
+      "text": "Crée un formulaire CERFA imaginaire pour obtenir l'autorisation officielle de souffler dans un saxophone après 22h.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "cloud"],
+      "title": "Deux Zéro Nuage",
+      "text": "Nomme 5 types de nuages en latin inventé, avec leurs effets supposés sur le comportement humain.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "heart"],
+      "title": "Deux Zéro Coeur",
+      "text": "Invente un horoscope fumeux pour chaque personne à table. Genre 'Poissons ascendant Nuage : méfie-toi des sacs en plastique'.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "0"],
+      "title": "Double Coeur Zéro",
+      "text": "Explique ta théorie sur pourquoi les dinosaures ont disparu. La vérité officielle est interdite. Sois créatif(ve).",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "4"],
+      "title": "Double Coeur Quatre",
+      "text": "Tu es un(e) agent(e) infiltré(e) au sein d'un groupe de tricoteurs suspects. Présente ton rapport de surveillance.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "4"],
+      "title": "Double Brume Quatre",
+      "text": "Pitche une série TV basée sur 'les aventures d'un inspecteur des impôts qui fume des camomilles'. 3 saisons minimum.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "2"],
+      "title": "Double Brume Deux",
+      "text": "Traduis en langue inventée la phrase : 'Le brouillard est mon ami, la clarté est suspecte.' Le groupe vote si ça sonne crédible.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "heart"],
+      "title": "Double Nuage Coeur",
+      "text": "Écris le menu d'un restaurant étoilé qui ne sert que des plats à base de 'brume de montagne reconstituée'.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "4"],
+      "title": "Double Interdit Quatre",
+      "text": "Joue le rôle d'un avocat qui défend un client accusé d'avoir 'trop pensé'. Plaidoirie de 45 secondes.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "2"],
+      "title": "Double Interdit Deux",
+      "text": "Invente le règlement d'un sport olympique fictif dont l'objectif est de 'ne surtout pas gagner'.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "heart"],
+      "title": "Double Interdit Coeur",
+      "text": "Confesse ton crime imaginaire le plus absurde dans un commissariat fictif. Tu as 30 secondes pour plaider non-coupable.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "cloud", "heart"],
+      "title": "Quatre Nuage Coeur",
+      "text": "Invente un cocktail à base d'herbes du jardin imaginaires. Décris les effets supposés avec sérieux médical.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "heart", "prohibited"],
+      "title": "Deux Coeur Interdit",
+      "text": "Tu es un détective privé chargé de résoudre le mystère de 'qui a mangé le dernier biscuit'. Enquête publique.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "cloud", "prohibited"],
+      "title": "Zéro Brume Interdit",
+      "text": "Rédige en 30 secondes une pétition pour rendre 'les mercredis plus flous'. Récolte des signatures à table.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "heart", "cloud"],
+      "title": "Zéro Coeur Nuage",
+      "text": "Présente ta candidature au poste de 'Ministre du Brouillard Durable'. Programme politique en 45 secondes.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "prohibited", "0"],
+      "title": "Quatre Interdit Zéro",
+      "text": "Réalise un unboxing très enthousiaste d'une boîte imaginaire contenant 'rien'. 45 secondes de pur enthousiasme.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "cloud", "0"],
+      "title": "Deux Nuage Zéro",
+      "text": "Explique pourquoi tu penses sincèrement que les pigeons font partie d'un réseau de surveillance gouvernemental.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "0", "4"],
+      "title": "Coeur Zéro Quatre",
+      "text": "Invente une médecine alternative basée uniquement sur 'respirer des nuages de différentes densités'. Tarifs, consultations, tout.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "0", "4"],
+      "title": "Nuage Zéro Quatre",
+      "text": "Lance une startup imaginaire. Pitch de 30 secondes. Produit : 'de l'air en bouteille premium pour méditations intenses'.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "4", "heart"],
+      "title": "Interdit Quatre Coeur",
+      "text": "Présente la biographie de ton alter ego imaginaire qui vit dans un pays où rien n'est interdit... sauf de s'ennuyer.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "4", "prohibited"],
+      "title": "Deux Quatre Interdit",
+      "text": "Tu es journaliste d'investigation. Tu as 30 secondes pour exposer le 'scandale des pots de confiture mal étiquetés'.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "2", "cloud"],
+      "title": "Zéro Deux Nuage",
+      "text": "Décris une journée typique de 'consultant en fumée stratégique pour PME'. Avec exemples concrets de missions.",
+      "intensity": 2,
+      "type": "standard"
+    }
+  ]
+}

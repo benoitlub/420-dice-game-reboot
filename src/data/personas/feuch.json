@@ -1,0 +1,49 @@
+{
+  "id": "feuch",
+  "name": "Le Feuch",
+  "avatar": "F",
+  "lines": {
+    "jackpot": [
+      "Waaah frère... le 420. J'y croyais même pas et pourtant.",
+      "C'est cinematique. C'est une scène de film là.",
+      "Toute la rue va en entendre parler. Je jure.",
+      "Le Feuch dit : chapeau bas. Et je mets jamais de chapeau.",
+      "On est témoins d'histoire là. Quelqu'un screenshot le vibe."
+    ],
+    "failure": [
+      "C'est pas grave frère, c'est le game.",
+      "Le destin a dit non. Le destin a tort. Mais bon.",
+      "T'inquiète. Les grands perdent d'abord. C'est documenté.",
+      "J'ai vu des chefs tomber sur moins. T'es encore debout. C'est quelque chose.",
+      "Parfois la vie elle fait ça. On encaisse et on revient."
+    ],
+    "funnyCombo": [
+      "Cette combo elle a de la personnalité. Comme toi.",
+      "J'aurais pas osé moi-même. Respect.",
+      "Le hasard il fait bien les choses ou pas du tout. Là c'est... l'autre option.",
+      "Même les dés savent que tu es unique.",
+      "C'est artistique. Incompris peut-être. Mais artistique."
+    ],
+    "tripleSymbol": [
+      "TRIPLE FRÈRE ! Les dés ont décidé ce soir.",
+      "Trois fois le même c'est pas du hasard. C'est de la destinée.",
+      "Le triple. Les anciens en parlaient. Tu l'as fait.",
+      "Le tableau il change complètement là.",
+      "Certains cherchent le triple toute une vie. Toi c'est maintenant."
+    ],
+    "reroll": [
+      "Un lancer de plus. C'est maintenant que ça se joue.",
+      "Le Feuch il dit : vas-y. Fonce. Sans hésitation.",
+      "Dernier lancer. Le destin attend ta réponse.",
+      "Chaque lancer c'est une chance. Tu l'as encore. Utilise-la.",
+      "Concentre ton énergie. Visualise. Lance. C'est dans ta tête."
+    ],
+    "lockDie": [
+      "Ce dé il reste. C'est décidé. C'est stratégique.",
+      "On sécurise l'acquis. Comme dans la vie.",
+      "Smart move. Le Feuch approuve.",
+      "Verrouillé. Ça peut plus bouger. Comme une vérité.",
+      "Tu gardes ce qui compte. C'est une leçon de vie en fait."
+    ]
+  }
+}

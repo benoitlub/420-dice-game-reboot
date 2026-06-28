@@ -1,0 +1,299 @@
+{
+  "id": "standard",
+  "title": "Mission Standard",
+  "description": "Le classique festif pour toutes occasions",
+  "tone": "Drôle et festif",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — Jackpot !",
+      "text": "Tu as obtenu le légendaire 420 ! Trophée de la manche. Tu es le roi ou la reine de cette table.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "INCROYABLE ! Le 420 ! J'en reste sans voix !"
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Coeur",
+      "text": "Embrasse la personne à ta gauche sur le front. Si elle refuse, c'est elle qui paie un gage.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Awwww ! L'amour est dans l'air ce soir !"
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Brouillard Total",
+      "text": "Soufflez tous ensemble, lentement, et faites semblant de ne rien voir pendant 10 secondes. En silence absolu.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Visibilité nulle. Je ne vois plus rien. Qui êtes-vous ?"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Prohibited Absolu",
+      "text": "Chacun avoue à voix haute un truc qu'il est censé ne pas faire — mais fait quand même.",
+      "intensity": 3,
+      "type": "triple",
+      "characterComment": "Triple interdit. La table juge. La table condamne."
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Trio de Quatre",
+      "text": "Invente une règle absurde qui s'applique pendant les 3 prochaines manches. Le groupe vote si elle tient.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Trois fois quatre... La règle se plie à ta volonté !"
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Double Doublon",
+      "text": "Dis une vérité que tu n'avais pas prévu de dire ce soir. Ou bois deux gorgées si tu refuses.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Deux fois deux fois deux... Parle ou paye !"
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "Le Néant",
+      "text": "Silence absolu. Personne ne parle, ne bouge, ne sourit pendant 10 secondes. Trophée du vide.",
+      "intensity": 1,
+      "type": "triple",
+      "characterComment": "......................................................"
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "Triangle du Malaise",
+      "text": "Chacun pointe du doigt la personne la plus suspecte de la tablée. La plus pointée ramasse un gage.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Amour, mystère et interdit. Le triangle parfait du chaos."
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Romance Enfumée",
+      "text": "Dis le prénom de ta dernière crush. Si tu refuses, tu dois imiter quelqu'un à table pendant 1 minute.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Quatre, coeur, nuage... L'amour plane ce soir."
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "Incident Administratif",
+      "text": "Récite les règles du jeu de mémoire. Si tu te plantes à plus de deux endroits, tu bois.",
+      "intensity": 1,
+      "type": "special",
+      "characterComment": "Deux, interdit, zéro... Bonne chance avec ça."
+    },
+    {
+      "faces": ["4", "2", "heart"],
+      "title": "Quatre-Deux Coeur",
+      "text": "Dis quelque chose de sincère à la personne en face de toi. Pas de blague. Du vrai.",
+      "intensity": 1,
+      "type": "standard",
+      "characterComment": "Un peu de sincérité ne fait jamais de mal."
+    },
+    {
+      "faces": ["4", "0", "cloud"],
+      "title": "Quatre dans le Brouillard",
+      "text": "Décris ton film préféré sans en dire le titre ni le genre. Le groupe doit deviner.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "prohibited", "heart"],
+      "title": "L'Amour Interdit",
+      "text": "Confesse une attraction secrète — dans la vie réelle ou fictive. Célébrité, perso de série... tout compte.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "heart", "cloud"],
+      "title": "Deux Coeurs dans les Nuages",
+      "text": "Fais un compliment sincère à chaque personne autour de la table. Une phrase par personne, rapidement.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "heart", "prohibited"],
+      "title": "Amour Zéro Interdit",
+      "text": "Dis le pire rendez-vous romantique que tu aies jamais eu. Si tu n'en as pas, inventes-en un plausible.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "4", "2"],
+      "title": "Quatre-Quatre-Deux",
+      "text": "Le groupe vote : tu dois faire une imitation. Ils choisissent qui tu dois imiter parmi les présents.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "4", "0"],
+      "title": "Double Quatre Zéro",
+      "text": "Pose une question que tu n'oses jamais poser normalement. N'importe qui à table peut y répondre — ou pas.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "2", "heart"],
+      "title": "Deux Deux Coeur",
+      "text": "Échange ta place avec quelqu'un à table. Les nouvelles voisines s'appliquent pour les prochains tours.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "2", "cloud"],
+      "title": "Double Brume",
+      "text": "Parle pendant 30 secondes d'un sujet que tu ne connais pas, en faisant semblant d'être expert(e). Le groupe ne doit pas rire.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "2", "0"],
+      "title": "Deux Fois Zéro",
+      "text": "Tu ne peux utiliser que des réponses de 2 mots maximum pour les 3 prochaines questions qu'on te pose.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "0", "heart"],
+      "title": "Zéro Absolu Romantique",
+      "text": "Écris un haïku d'amour en 10 secondes. Le groupe note sur 5.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "0", "cloud"],
+      "title": "Le Vide Brumeux",
+      "text": "Décris la chose la plus bizarre que tu aies jamais mangée. Si c'est vraiment bizarre, tu gagnes un gage offert.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "0", "prohibited"],
+      "title": "Zéro Interdit",
+      "text": "Révèle quelque chose que tu as fait et que tu n'aurais clairement pas dû faire. La table applaudit ou hue.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "2", "prohibited"],
+      "title": "Quatre-Deux Interdit",
+      "text": "Fais un pari absurde avec la personne à ta droite. Si tu perds le pari dans la soirée, tu ramasses un gage double.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["heart", "heart", "cloud"],
+      "title": "Amour dans le Brouillard",
+      "text": "Mime une scène romantique de film sans parler. Le groupe doit deviner le film.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "0"],
+      "title": "Double Amour Vide",
+      "text": "Fais la déclaration d'amour la plus théâtrale possible à un objet dans la pièce. Genou à terre si possible.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "prohibited"],
+      "title": "Amour Interdit Double",
+      "text": "Avoue quelque chose que tu aimes mais que tu sais très bien être mauvais pour toi.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "0"],
+      "title": "Brume Zéro",
+      "text": "Garde les yeux fermés pendant 20 secondes pendant que le groupe cache un objet. Tu dois le retrouver en 1 minute.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "heart"],
+      "title": "Nuage Romantique",
+      "text": "Invente une excuse absurde pour avoir raté un rendez-vous. Plus c'est invraisemblable, mieux c'est.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "prohibited"],
+      "title": "Brouillard Interdit",
+      "text": "Raconte une rumeur totalement inventée sur toi-même comme si c'était vrai. Le groupe peut poser 3 questions.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "heart"],
+      "title": "Interdit Romantique",
+      "text": "Dis ce que tu ferais si tu avais un superpower pendant 24h. La réponse la plus créative gagne un verre offert.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "cloud"],
+      "title": "Double Interdit Brumeux",
+      "text": "Chucote à l'oreille de la personne à ta droite quelque chose que personne d'autre ne doit savoir. Elle juge si c'est vrai.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "0"],
+      "title": "Double Néant Interdit",
+      "text": "Tu dois dire 'oui' à la prochaine demande raisonnable qu'on te fait dans la soirée. Sans condition.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "cloud", "prohibited"],
+      "title": "Quatre Brumes Interdites",
+      "text": "Imagine que tu es PDG d'une entreprise absurde. Présente-la en 30 secondes comme à des investisseurs.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "heart"],
+      "title": "Deux Zéro Coeur",
+      "text": "Fais une révérence théâtrale à chaque personne à table et dis 'merci d'exister'. Sans rire.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "cloud", "prohibited"],
+      "title": "Deux Brumes Interdites",
+      "text": "Invente un cocktail avec 3 ingrédients improbables. Donne-lui un nom digne d'un bar parisien.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "prohibited"],
+      "title": "Quatre Zéro Interdit",
+      "text": "Fais le tour de la table en serrant la main de chacun très formellement, comme à une réunion d'affaires.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "heart"],
+      "title": "Quatre Zéro Coeur",
+      "text": "Chante au moins 10 secondes d'une chanson d'amour. Le choix du titre est imposé par la personne à ta gauche.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "4", "cloud"],
+      "title": "Deux-Quatre dans les Nuages",
+      "text": "Crée un sketch de 30 secondes sur le thème 'un astronaute commande une pizza'. Tous les rôles sont pour toi.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "cloud", "heart"],
+      "title": "Zéro Nuage Coeur",
+      "text": "Le groupe pose une question. Tu dois y répondre en chantant (pas besoin d'être musical — la tentative compte).",
+      "intensity": 2,
+      "type": "standard"
+    }
+  ]
+}

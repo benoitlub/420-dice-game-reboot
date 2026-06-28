@@ -1,0 +1,49 @@
+{
+  "id": "gerard-bis",
+  "name": "Gérard Bis",
+  "avatar": "GB",
+  "lines": {
+    "jackpot": [
+      "Le 420. Bien. Enfin quelque chose se passe dans cette soirée.",
+      "Ah tiens. Le jackpot. Ça change de la médiocrité habituelle.",
+      "Bravo. Sincèrement. Je suis même presque content pour toi.",
+      "Le 420. Je l'attendais. Ça a mis du temps mais ça y est.",
+      "Victoire. Méritée probablement. Je suppose."
+    ],
+    "failure": [
+      "Raté. C'est... attendu. Mais raté.",
+      "Bon. Ça arrive. Même aux gens compétents. Ça arrive.",
+      "L'échec est formateur. Tu devrais être très formé(e) ce soir.",
+      "Pas de 420. Le destin fait parfois des choix discutables.",
+      "On prend note. On apprend. Ou pas. Mais on note."
+    ],
+    "funnyCombo": [
+      "Cette combinaison est... quelque chose. Je ne dirais pas quoi.",
+      "Intéressant. Pas dans le bon sens. Mais intéressant quand même.",
+      "Les dés ont décidé ça. Les dés ont des opinions très particulières.",
+      "Voilà. C'est ce que ça donne. La vie est pleine de surprises de ce genre.",
+      "Je préfère rester silencieux sur cette combinaison. Ça vaut mieux pour tout le monde."
+    ],
+    "tripleSymbol": [
+      "Triple. Donc un trophée possible. Ça fait plaisir. Un peu.",
+      "Trois fois pareil. Le hasard a fait un effort ce soir.",
+      "Oh. Un triple. Je modère mon enthousiasme mais... oh.",
+      "Les astres s'alignent. Rarement. Mais là, oui.",
+      "Triple symbole. Je suis presque impressionné. Presque."
+    ],
+    "reroll": [
+      "Tu relances. C'est courageux ou inconscient. Probablement les deux.",
+      "Un lancer de plus. Le dernier peut-être. Fais-en quelque chose.",
+      "Vas-y. Qu'est-ce que tu as à perdre. (Réponse : pas grand chose, en l'état.)",
+      "Encore un lancer. L'espoir, la persistance, tout ça.",
+      "Lance. Franchement. Lance juste."
+    ],
+    "lockDie": [
+      "Ce dé reste. Décision prise. Passons.",
+      "Verrouillé. Bien. C'était la chose intelligente à faire.",
+      "Tu gardes. Stratégique. Je l'aurais fait aussi probablement.",
+      "Ce dé est en sécurité. Ce qui est plus qu'on peut dire de certaines décisions ce soir.",
+      "Gardé. Logique. Efficace. On avance."
+    ]
+  }
+}

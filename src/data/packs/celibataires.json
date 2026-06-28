@@ -1,0 +1,222 @@
+{
+  "id": "celibataires",
+  "title": "Mission Célibataires",
+  "description": "Drague assumée, zone amie et autodérision romantique",
+  "tone": "Dragueur et autodérisoire",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — Le Grand Amour (Enfin) !",
+      "text": "Jackpot sentimental. Tu es déclaré(e) célibataire le plus charismatique de la table. Tu accordes un seul conseil amoureux — et les autres doivent le suivre ce soir.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "LE 420 ! L'amour est en chemin. Ou en tout cas... quelque chose."
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Crush",
+      "text": "Révèle ton type idéal en 5 caractéristiques précises. Le groupe vote quelle personne à table correspond le mieux.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Trois coeurs ! Quelqu'un est prêt pour une relation sérieuse ce soir."
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Zone Amie Totale",
+      "text": "Raconte le plus beau/terrible moment où tu as réalisé que tu étais dans la zone amie. Avec tous les détails.",
+      "intensity": 3,
+      "type": "triple",
+      "characterComment": "Trois nuages. Tu es dans la zone amie... du jeu."
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Drapeau Rouge Absolu",
+      "text": "Chacun liste son pire red flag romantique — celui qu'il a ignoré et qu'il n'aurait clairement pas dû.",
+      "intensity": 3,
+      "type": "triple",
+      "characterComment": "Triple interdit. Les red flags flottent au vent de la vérité."
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Trois Matches",
+      "text": "Tu as 30 secondes pour pitcher qui dans cette pièce tu mettrais en couple avec qui, et pourquoi. Sois précis(e).",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Double Swipe",
+      "text": "Décris en 10 mots ta bio Tinder actuelle — réelle ou idéale. Le groupe swipe à droite ou à gauche.",
+      "intensity": 2,
+      "type": "triple"
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "Zéro Match",
+      "text": "Raconte ta pire histoire de premier rendez-vous. En 45 secondes. Le groupe compatit ou se moque affectueusement.",
+      "intensity": 2,
+      "type": "triple"
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "Il/Elle te Kiffe Pas",
+      "text": "Mime sans paroles le moment classique du 'on reste amis'. Le groupe doit deviner à quel moment tu as réalisé.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Crush Fantôme",
+      "text": "Décris quelqu'un que tu aimes en secret (anonymisé) avec 5 indices. Le groupe tente de deviner qui c'est.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "Le Ghostage",
+      "text": "Invente un message de rupture par SMS aussi maladroit que possible. Le groupe vote le plus sincèrement pathétique.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "2", "heart"],
+      "title": "Vrai-Faux Romantique",
+      "text": "Dis deux vérités et un mensonge sur ta vie amoureuse. Le groupe doit trouver le mensonge.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "cloud"],
+      "title": "Profil Parfait",
+      "text": "Crée le profil de dating imaginaire de la personne à ta gauche. Photo de profil décrite, bio, passions. Elle valide ou corrige.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "4"],
+      "title": "Double Crush Quatre",
+      "text": "Classe les personnes à table par ordre de probabilité qu'elles se marient en premier. Justifie le top 3.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "2"],
+      "title": "Double Coeur App",
+      "text": "Présente les statistiques fictives de ta vie amoureuse comme une infographie LinkedIn. Taux de conversion, durée moyenne, ROI.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "4"],
+      "title": "Brume Romantique",
+      "text": "Décris l'ex idéal(e) que tu n'as jamais eu(e) en 30 secondes. Ne ris pas.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "heart"],
+      "title": "Zone Amie Coeur",
+      "text": "Récite le discours que tu aurais voulu faire au lieu de rester dans la zone amie. Sincère ou théâtral.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "4"],
+      "title": "Double Red Flag",
+      "text": "Invente le profil de la personne avec TOUS les red flags que tu as déjà ignorés. Le groupe l'appelle par un prénom.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "heart"],
+      "title": "Interdit Romantique",
+      "text": "Confesse un green flag que tu pensais avoir chez une personne mais qui était en fait un délire complet de ta part.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "cloud", "heart"],
+      "title": "Fantasme Brumeux",
+      "text": "Invente la rencontre parfaite dans un café — heure, météo, qui commande quoi, et pourquoi ça tourne mal quand même.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "heart", "cloud"],
+      "title": "Message Lu Non Répondu",
+      "text": "Lis à voix haute le dernier message romantique (ou embarrassant) que tu as envoyé. Sans expliquer le contexte d'abord.",
+      "intensity": 3,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "heart", "cloud"],
+      "title": "Fin de Soirée",
+      "text": "Joue le rôle de quelqu'un qui envoie un message à 2h du matin à son ex. Le groupe choisit l'humeur : nostalgique, vengeur, ou philosophique.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "prohibited", "0"],
+      "title": "Swipe Interdit",
+      "text": "Décris la rencontre la plus improbable qui aurait pu marcher mais n'a pas marché. Ou celle que tu as sabotée sans le savoir.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "cloud"],
+      "title": "Deux Zéro Date",
+      "text": "Planifie le pire rendez-vous possible. Lieu, conversation, addition et départ. 30 secondes pour le tableau complet.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "0", "prohibited"],
+      "title": "Love Bombing Interdit",
+      "text": "Fais un discours de 20 secondes pour convaincre le groupe que tu es 'exactement ce qu'ils cherchent'. Sois convaincu(e).",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "4", "heart"],
+      "title": "Double Quatre Romance",
+      "text": "Le groupe te donne un scénario de rencontre absurde. Tu joues le premier échange en entier. 30 secondes.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "0", "cloud"],
+      "title": "Zéro Zéro Date",
+      "text": "Raconte une nuit où tu aurais pu rencontrer quelqu'un mais où la flemme a gagné. Avec tous les regrets ou aucun.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "0", "prohibited"],
+      "title": "Nuage Interdit",
+      "text": "Joue la scène du 'on est juste amis' version remake hollywoodien. Tu joues tous les rôles.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "4", "cloud"],
+      "title": "Deux Quatre Nuage",
+      "text": "Présente les 3 choses que tu ne peux absolument plus accepter dans une relation. Classe-les par importance décroissante.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "4", "heart"],
+      "title": "Zéro Quatre Coeur",
+      "text": "Fais la liste de tes 3 meilleurs points de vente romantiques. Sans ironie. Le groupe note sur 10.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "4", "prohibited"],
+      "title": "Coeur Quatre Interdit",
+      "text": "Décris en 20 secondes le scénario de film romantique dans lequel tu te retrouves le plus souvent dans la vraie vie.",
+      "intensity": 2,
+      "type": "standard"
+    }
+  ]
+}

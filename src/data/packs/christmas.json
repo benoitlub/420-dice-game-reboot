@@ -1,0 +1,232 @@
+{
+  "id": "christmas",
+  "title": "Mission Christmas",
+  "description": "Magie de Noël, lutins suspects et secrets de famille",
+  "tone": "Festif et féerique",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — Jackpot de Noël !",
+      "text": "Tu es officiellement désigné(e) Père Noël de la tablée pour ce soir. Tu accordes un voeu (raisonnable) à chaque personne.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "HO HO HO ! Le 420 de Noël ! Le traîneau peut décoller !"
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Coeur de Noël",
+      "text": "Offre un compliment sincère emballé comme un cadeau à chaque personne à table. 'Je t'offre...' suivi de quelque chose de vrai.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Trois coeurs sous le sapin. C'est le plus beau des cadeaux."
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Tempête de Neige",
+      "text": "Tout le monde doit chanter en même temps un cantique de Noël différent pendant 10 secondes. Le chaos est le but.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Il neige... du chaos mélodieux. Magnifique."
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Interdit de Noël",
+      "text": "Chacun révèle le pire cadeau de Noël qu'il ait jamais reçu — et de qui. Avec les gestes qui vont bien.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Triple interdit sous les guirlandes. La vérité sort du sapin."
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Trois Rois Mages",
+      "text": "Tu dois offrir symboliquement trois cadeaux imaginaires aux trois personnes à ta gauche. Un cadeau absurde par personne.",
+      "intensity": 1,
+      "type": "special",
+      "characterComment": "Quatre, quatre, quatre... Les trois rois sont en retard mais ils arrivent."
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Triple Lutin",
+      "text": "Tu es un lutin de Noël en grève. Expose tes revendications au Père Noël (joué par la personne en face de toi). 45 secondes.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Les lutins ont des droits. Solidarity avec les petits travailleurs du pôle Nord."
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "Zéro Cadeau",
+      "text": "Silence de minuit. Personne ne bouge ni parle pendant 15 secondes. On imagine tous entendre le traîneau au loin.",
+      "intensity": 1,
+      "type": "triple",
+      "characterComment": "...Chuttt... Vous avez entendu ? Les rennes. Sur le toit."
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "Secret de Famille",
+      "text": "Révèle un secret de famille (discret et drôle, pas traumatisant). La table peut poser une seule question.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Lettre au Père Noël",
+      "text": "Rédige à voix haute la lettre au Père Noël que tu aurais voulu envoyer cette année. Sans filtre. Le groupe vote si c'est méritée.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "Lutin Rebelle",
+      "text": "Tu es un lutin qui a décidé de tout saborer cette année. Décris ton plan pour ruiner Noël — avec bienveillance bien sûr.",
+      "intensity": 2,
+      "type": "special"
+    },
+    {
+      "faces": ["4", "2", "heart"],
+      "title": "Quatre-Deux Sous le Sapin",
+      "text": "Mime le déballage du pire cadeau de ta vie avec enthousiasme simulé. Le groupe crie 'MENTEUR' s'il détecte le jeu.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "2", "cloud"],
+      "title": "Neige et Nostalgie",
+      "text": "Raconte ton meilleur souvenir de Noël d'enfance. 30 secondes, sans s'arrêter. Les autres applaudissent à la fin.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "0", "cloud"],
+      "title": "Quatrième Renne",
+      "text": "Invente un nouveau renne pour le traîneau du Père Noël. Nom, pouvoirs spéciaux et raison pour laquelle il est plus utile que Rudolph.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "4"],
+      "title": "Double Amour Quatre",
+      "text": "Chante 15 secondes du cantique 'Mon Beau Sapin' version jazz, reggae, ou métal. Au choix du groupe.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "heart", "2"],
+      "title": "Double Coeur Deux",
+      "text": "Dis à chaque personne à table ce que tu lui aurais offert si tu avais un budget illimité. Sois précis(e).",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "4"],
+      "title": "Blizzard de Quatre",
+      "text": "Pendant 2 minutes, tu ne peux parler qu'en fredonnant des airs de Noël. La communication continue, mais musicalement.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "cloud", "2"],
+      "title": "Tempête de Deux",
+      "text": "Fais le trajet imaginaire du Père Noël en 30 secondes. Commence par l'Islande et finit au Japon. Avec les bruitages de rennes.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "4"],
+      "title": "Double Interdit de Noël",
+      "text": "Tu es l'avocat du Grinch. Défends-le en 30 secondes avec des arguments solides. La table vote le verdict.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "2"],
+      "title": "Double Interdit Lutin",
+      "text": "Révèle la chose que tu sais être interdite à Noël mais que tu fais quand même (manger les chocolats du calendrier en avance, etc.).",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "cloud", "prohibited"],
+      "title": "Père Noël Suspect",
+      "text": "Le groupe pose 3 questions au Père Noël (c'est toi). Tu dois répondre honnêtement sur sa vraie vie au pôle Nord.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "heart", "cloud"],
+      "title": "Deux Coeurs dans la Neige",
+      "text": "Raconte en 30 secondes comment tu imagines le réveillon idéal — lieu, personnes, menu, musique. Sois précis(e).",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "cloud", "heart"],
+      "title": "Zéro Neige Coeur",
+      "text": "Crée un bonhomme de neige imaginaire avec une personnalité. Donne-lui un nom, un métier et un drame familial.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "prohibited", "heart"],
+      "title": "Interdit Romantique de Noël",
+      "text": "Invente la vraie raison pour laquelle le Père Noël ne livre pas les cadeaux en mars. La version officielle est connue et ennuyeuse.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "0", "cloud"],
+      "title": "Deux Zéro Neige",
+      "text": "Compose en 20 secondes le nouveau slogan officiel de Noël. Accrocheur, festif, légèrement absurde.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "prohibited", "cloud"],
+      "title": "Noël Interdit",
+      "text": "Présente un film de Noël entier en 30 secondes. Spoilers compris. Le groupe doit deviner lequel.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["heart", "0", "prohibited"],
+      "title": "Amour Zéro Interdit",
+      "text": "Écris en 20 secondes une carte de voeux pour une personne difficile de ta famille. Reste sincère mais vague.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["4", "4", "heart"],
+      "title": "Double Quatre Coeur",
+      "text": "Organise un Noël alternatif. Date : 14 août. Pays : Brésil. Traditions : entièrement inventées par toi. Présentation en 30 secondes.",
+      "intensity": 2,
+      "type": "standard"
+    },
+    {
+      "faces": ["2", "4", "0"],
+      "title": "Deux-Quatre-Zéro",
+      "text": "Tu dois acheter des cadeaux pour le groupe avec un budget imaginaire de 3 euros. Un cadeau par personne. Décris-les.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "4", "heart"],
+      "title": "Zéro Quatre Coeur",
+      "text": "Joue le rôle du vendeur en grande surface qui place les décos de Noël dès le 1er septembre. Justifie-toi avec passion.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["cloud", "heart", "4"],
+      "title": "Nuage Coeur Quatre",
+      "text": "Fais une météo spéciale Noël pour le pôle Nord. Avec perturbations, fronts froids et prévisions pour les rennes.",
+      "intensity": 1,
+      "type": "standard"
+    },
+    {
+      "faces": ["0", "2", "prohibited"],
+      "title": "Zéro Deux Interdit",
+      "text": "Invente une nouvelle tradition de Noël qui n'existe nulle part mais qui aurait dû. Rends-la convaincante.",
+      "intensity": 1,
+      "type": "standard"
+    }
+  ]
+}
