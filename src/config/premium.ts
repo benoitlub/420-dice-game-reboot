@@ -1,15 +1,15 @@
 /**
  * Configuration Premium — 420 Dice Game · Feuch Institute
  *
- * Ne jamais coder l'URL PayPal ou les identifiants en dur dans le code de
- * l'application. Toute la configuration payante passe par ce fichier.
- *
- * Les libellés du bouton (membershipLabel, membershipTagline) sont désormais
- * dans src/i18n/ pour être traduits en FR / ES / EN.
+ * Le Premium est une carte membre à prix fixe, pas un don.
+ * Remplacer `paymentUrl` par un vrai lien PayPal "Acheter maintenant" quand il est prêt.
  */
 export const PREMIUM_CONFIG = {
-  /** URL du bouton PayPal donation / membership. */
-  paypalUrl: 'https://www.paypal.com/donate?business=benoitlubert%40gmail.com&currency_code=EUR',
+  /** Prix public de lancement */
+  priceLabel: '4,20 €',
+
+  /** URL PayPal produit / achat. Laisser vide tant que le lien PayPal marchand n'est pas prêt. */
+  paymentUrl: '',
 
   /** Version du système Premium — incrémentée lors d'un changement de droits. */
   premiumVersion: '1.0.0',
@@ -39,6 +39,7 @@ export function isPremium(): boolean {
   return localStorage.getItem(STORAGE_KEY) === 'active';
 }
 
+/** Activation réservée à une future preuve d'achat / code licence. */
 export function activatePremium(): void {
   localStorage.setItem(STORAGE_KEY, 'active');
 }
