@@ -26,31 +26,9 @@ import {
   playNewRound,
 } from '../octopus/audio/soundEngine';
 import { pickRandom } from '../octopus';
+import { useT } from '../i18n';
 
 const ROLL_ANIMATION_MS = 700;
-
-/* ─── Narratif Feuch Institute ────────────────────────────────────── */
-
-const FEUCH_FLAVORS = [
-  "Le laboratoire valide cette expérience.",
-  "Natasha note un comportement inhabituel.",
-  "Le Feuch observe un alignement improbable.",
-  "Protocole 420 initié. Résultats enregistrés.",
-  "L'Institut prend note de cette configuration.",
-  "Le Grand Registre a été mis à jour.",
-  "Natasha : « Intéressant. Très intéressant. »",
-  "Le Feuch approuve cette expérimentation.",
-  "Archive automatique déclenchée. Continuez.",
-  "Signal détecté. L'expérience peut reprendre.",
-  "Le Feuch note une anomalie cosmique favorable.",
-  "Natasha : « Les dés ne mentent jamais. »",
-  "Le laboratoire enregistre des données inhabituelles.",
-  "Condition optimale détectée. Lancez.",
-];
-
-function getFeuchFlavor(): string {
-  return pickRandom(FEUCH_FLAVORS);
-}
 
 /* ─── Résolution de manche ────────────────────────────────────────── */
 
@@ -86,6 +64,7 @@ function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPe
 /* ─── Page ────────────────────────────────────────────────────────── */
 
 export function GamePage() {
+  const { t } = useT();
   const packs = getAvailablePacks();
   const [gameState, setGameState] = useState<GameState>(() =>
     createInitialState('standard')
@@ -101,7 +80,6 @@ export function GamePage() {
     if (gameState.roundPhase === 'VICTORY' || gameState.roundPhase === 'DEFEAT') return;
     if (gameState.rollCount >= gameState.maxRolls) return;
 
-    // Son de lancer (avant l'animation)
     playDiceRoll();
     setIsRolling(true);
 
@@ -149,7 +127,6 @@ export function GamePage() {
     (id: number) => {
       if (gameState.roundPhase !== 'WAITING_SELECTION' || isRolling) return;
 
-      // Son : verrouiller ou déverrouiller
       const wasLocked = gameState.dice.find(d => d.id === id)?.locked ?? false;
       if (wasLocked) playDiceUnlocked(); else playDiceLocked();
 
@@ -163,14 +140,13 @@ export function GamePage() {
     setShowModal(false);
     setGameState(createInitialState(gameState.selectedPack));
 
-    // Son de nouvelle manche + flaveur Feuch (60 % du temps)
     playNewRound();
     if (Math.random() < 0.60) {
-      setComment(getFeuchFlavor());
+      setComment(pickRandom(t.game.feuchFlavors));
     } else {
       setComment(null);
     }
-  }, [gameState.selectedPack]);
+  }, [gameState.selectedPack, t.game.feuchFlavors]);
 
   const handleCloseModal = useCallback(() => {
     setShowModal(false);
@@ -196,7 +172,6 @@ export function GamePage() {
   const showLockHint =
     gameState.roundPhase === 'WAITING_SELECTION' && !isRolling;
 
-  // Le PersonaBubble s'affiche en WAITING_SELECTION ou en READY (flaveurs Feuch)
   const showPersonaBubble =
     comment && !showModal &&
     (gameState.roundPhase === 'WAITING_SELECTION' || gameState.roundPhase === 'READY');
@@ -221,8 +196,8 @@ export function GamePage() {
 
           {showLockHint && (
             <p className="text-xs text-muted-foreground text-center -mt-2">
-              Clique sur un dé pour le{' '}
-              <span className="text-amber-400 font-semibold">garder</span>
+              {t.game.lockHintPre}{' '}
+              <span className="text-amber-400 font-semibold">{t.game.lockHintWord}</span>
             </p>
           )}
 

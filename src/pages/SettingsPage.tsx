@@ -239,9 +239,9 @@ export function SettingsPage() {
           <Info className="w-4 h-4 text-violet-400" />
           <h2 className="text-sm font-bold text-white/60">{t.settings.about}</h2>
         </div>
-        <p className="text-xs text-white/40">420 Dice Game Reboot</p>
-        <p className="text-xs text-white/25">Propulsé par Octopus Engine</p>
-        <p className="text-xs text-white/25">Blacklace Studio · Feuch Institute</p>
+        <p className="text-xs text-white/40">{t.settings.aboutGame}</p>
+        <p className="text-xs text-white/25">{t.settings.aboutEngine}</p>
+        <p className="text-xs text-white/25">{t.settings.aboutStudio}</p>
       </section>
     </div>
   );

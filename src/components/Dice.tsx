@@ -1,4 +1,5 @@
 import type { Die } from '../types/game';
+import { useT } from '../i18n';
 
 interface DiceProps {
   die: Die;
@@ -63,6 +64,7 @@ const ICON_COLOR: Record<string, string> = {
 /* ─── Composant Dice ────────────────────────────────────────────────── */
 
 export function Dice({ die, onToggleLock, isRolling, disabled }: DiceProps) {
+  const { t } = useT();
   const isNumeric = die.face in FACE_NUMBER;
   const icon      = FACE_ICON[die.face];
   const numLabel  = FACE_NUMBER[die.face];
@@ -72,17 +74,19 @@ export function Dice({ die, onToggleLock, isRolling, disabled }: DiceProps) {
     animClass = die.locked ? 'animate-dice-stay' : 'animate-dice-roll';
   }
 
+  const ariaLabel = die.locked
+    ? `${t.aria.dieLabel(die.id + 1, die.face)} (${t.aria.dieLocked})`
+    : t.aria.dieLabel(die.id + 1, die.face);
+
   return (
     <button
       data-testid={`die-${die.id}`}
       onClick={onToggleLock}
       disabled={disabled}
-      aria-label={`Dé ${die.id + 1}: ${die.face}${die.locked ? ' (verrouillé)' : ''}`}
+      aria-label={ariaLabel}
       className={[
-        /* Taille responsive : 86px mobile, 106px ≥sm */
         'relative w-[86px] h-[86px] sm:w-[106px] sm:h-[106px]',
         'flex items-center justify-center select-none',
-        /* Le padding interne est géré par flex centering — icône ne touche jamais le bord */
         'transition-all duration-200',
         !disabled && !isRolling ? 'cursor-pointer' : 'cursor-default',
         die.locked ? 'die-3d die-locked' : 'die-3d',
@@ -105,10 +109,10 @@ export function Dice({ die, onToggleLock, isRolling, disabled }: DiceProps) {
         </span>
       )}
 
-      {/* Label GARDÉ */}
+      {/* Label GARDÉ / KEPT / GUARDADO */}
       {die.locked && (
         <span className="absolute bottom-1.5 sm:bottom-2 left-0 right-0 text-center text-[7px] sm:text-[8px] font-bold text-violet-300/75 uppercase tracking-[.14em] leading-none">
-          GARDÉ
+          {t.game.dieKept}
         </span>
       )}
 

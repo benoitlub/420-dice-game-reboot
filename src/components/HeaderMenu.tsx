@@ -54,7 +54,7 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
       if (navigator.share) {
         await navigator.share({
           title: '420 Dice Game',
-          text: 'Un jeu de dés Blacklace par le Feuch Institute.',
+          text: t.aria.shareText,
           url: window.location.href,
         });
       } else {
@@ -119,7 +119,7 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
       {/* Bouton hamburger */}
       <button
         onClick={() => setOpen(v => !v)}
-        aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+        aria-label={open ? t.aria.closeMenu : t.aria.openMenu}
         className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-150"
         style={{
           background: open

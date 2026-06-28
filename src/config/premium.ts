@@ -4,12 +4,12 @@
  * Ne jamais coder l'URL PayPal ou les identifiants en dur dans le code de
  * l'application. Toute la configuration payante passe par ce fichier.
  *
- * Pour changer de prestataire de paiement : remplacer `paypalUrl` et le
- * label du bouton dans PremiumPage.tsx.
+ * Les libellés du bouton (membershipLabel, membershipTagline) sont désormais
+ * dans src/i18n/ pour être traduits en FR / ES / EN.
  */
 export const PREMIUM_CONFIG = {
-  /** URL du bouton PayPal donation / membership. Configurer avant déploiement. */
-  paypalUrl: 'https://www.paypal.com/donate/?hosted_button_id=FEUCH_INSTITUTE',
+  /** URL du bouton PayPal donation / membership. */
+  paypalUrl: 'https://www.paypal.com/donate?business=benoitlubert%40gmail.com&currency_code=EUR',
 
   /** Version du système Premium — incrémentée lors d'un changement de droits. */
   premiumVersion: '1.0.0',
@@ -28,12 +28,6 @@ export const PREMIUM_CONFIG = {
     'adolescents',
     'apero',
   ] as string[],
-
-  /** Titre narratif — jamais "Acheter" */
-  membershipLabel: 'Rejoindre le Feuch Institute',
-
-  /** Tagline sur le bouton */
-  membershipTagline: 'Votre carte de membre débloque toutes les expériences',
 } as const;
 
 /* ─── Helpers localStorage ──────────────────────────────────────────── */

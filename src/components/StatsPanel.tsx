@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { resetStats, getAllPacks } from '../octopus';
 import type { GameStats } from '../octopus';
+import { useT } from '../i18n';
 
 interface StatsPanelProps {
   stats: GameStats;
@@ -18,6 +19,7 @@ function StatRow({ label, value }: { label: string; value: string | number }) {
 
 export function StatsPanel({ stats, onReset }: StatsPanelProps) {
   const [confirming, setConfirming] = useState(false);
+  const { t } = useT();
   const packs = getAllPacks();
   const favPackName = packs.find(p => p.id === stats.favoritePack)?.title ?? stats.favoritePack;
 
@@ -34,14 +36,14 @@ export function StatsPanel({ stats, onReset }: StatsPanelProps) {
   return (
     <div data-testid="stats-panel" className="flex flex-col gap-4">
       <div className="bg-stone-800/60 rounded-xl border border-stone-700 p-4">
-        <StatRow label="Manches jouées" value={stats.roundsPlayed} />
-        <StatRow label="Jackpots 420" value={stats.jackpots420} />
-        <StatRow label="Total lancers" value={stats.totalRolls} />
-        <StatRow label="Pack préféré" value={favPackName} />
-        <StatRow label="Meilleure série" value={stats.bestStreak} />
-        <StatRow label="Trophées gagnés" value={stats.trophiesEarned.length} />
+        <StatRow label={t.stats.rowRoundsPlayed} value={stats.roundsPlayed} />
+        <StatRow label={t.stats.rowJackpots}      value={stats.jackpots420} />
+        <StatRow label={t.stats.rowTotalRolls}    value={stats.totalRolls} />
+        <StatRow label={t.stats.rowFavPack}        value={favPackName} />
+        <StatRow label={t.stats.rowBestStreak}    value={stats.bestStreak} />
+        <StatRow label={t.stats.rowTrophies}      value={stats.trophiesEarned.length} />
         {stats.lastResult && (
-          <StatRow label="Dernier résultat" value={stats.lastResult} />
+          <StatRow label={t.stats.rowLastResult}  value={stats.lastResult} />
         )}
       </div>
 
@@ -55,14 +57,15 @@ export function StatsPanel({ stats, onReset }: StatsPanelProps) {
             : 'bg-stone-800 border-stone-600 text-stone-400 hover:border-stone-400 hover:text-stone-200',
         ].join(' ')}
       >
-        {confirming ? 'Confirmer la réinitialisation ?' : 'Réinitialiser les stats'}
+        {confirming ? t.stats.confirmResetBtn : t.stats.resetBtn}
       </button>
+
       {confirming && (
         <button
           onClick={() => setConfirming(false)}
           className="w-full py-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
-          Annuler
+          {t.stats.cancelBtn}
         </button>
       )}
     </div>

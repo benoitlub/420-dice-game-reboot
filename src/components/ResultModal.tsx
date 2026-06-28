@@ -88,7 +88,7 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
-      aria-label="Résultat de la manche"
+      aria-label={t.aria.resultModal}
     >
       <div
         ref={cardRef}
@@ -168,7 +168,7 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
               )}
               <span
                 className={['text-sm font-bold tracking-widest', INTENSITY_COLOR[result.intensity] ?? 'text-muted-foreground'].join(' ')}
-                title={`Intensité ${result.intensity}`}
+                title={t.aria.intensity(result.intensity)}
               >
                 {INTENSITY_LABEL[result.intensity]}
               </span>

@@ -3,27 +3,30 @@ import { Sparkles, Lock, Unlock, ChevronRight, Heart } from 'lucide-react';
 import { PREMIUM_CONFIG, isPremium, activatePremium, deactivatePremium } from '../config/premium';
 import { useT } from '../i18n';
 
-const PACK_PREVIEWS = [
-  { id: 'pro-hibited',   name: 'Pro.Hibited',        emoji: '🚫', desc: 'Gages professionnellement inconfortables' },
-  { id: 'christmas',     name: 'Mission Christmas',   emoji: '🎄', desc: 'Ambiance festive garantie' },
-  { id: 'celibataires',  name: 'Mission Célibataires',emoji: '💘', desc: 'Pour les célibataires audacieux' },
-  { id: 'adolescents',   name: 'Mission Ados',        emoji: '🎮', desc: 'La version sans filtre' },
-  { id: 'apero',         name: 'Mission Apéro',       emoji: '🥂', desc: 'Parfait pour commencer la soirée' },
+const PACK_IDS = [
+  { id: 'pro-hibited',   name: 'Pro.Hibited',         emoji: '🚫' },
+  { id: 'christmas',     name: 'Mission Christmas',    emoji: '🎄' },
+  { id: 'celibataires',  name: 'Mission Célibataires', emoji: '💘' },
+  { id: 'adolescents',   name: 'Mission Ados',         emoji: '🎮' },
+  { id: 'apero',         name: 'Mission Apéro',        emoji: '🥂' },
 ];
 
-const PERKS = [
-  { icon: '🎲', text: 'Tous les packs de gages déverrouillés' },
-  { icon: '🎭', text: 'Personnages narrateurs exclusifs' },
-  { icon: '✨', text: 'Effets spéciaux premium' },
-  { icon: '🏅', text: 'Trophées et récompenses cachés' },
-  { icon: '🔮', text: 'Packs futurs inclus automatiquement' },
-  { icon: '❤️', text: 'Soutien au développement Blacklace' },
-];
+const PERK_ICONS = ['🎲', '🎭', '✨', '🏅', '🔮', '❤️'];
 
 export function PremiumPage() {
   const [premium, setPremium] = useState(isPremium());
   const [restored, setRestored] = useState(false);
   const { t } = useT();
+
+  const packs = PACK_IDS.map(p => ({
+    ...p,
+    desc: t.premium.packDescs[p.id] ?? '',
+  }));
+
+  const perks = t.premium.perks.map((text, i) => ({
+    icon: PERK_ICONS[i] ?? '✦',
+    text,
+  }));
 
   function handleOpenPayPal() {
     window.open(PREMIUM_CONFIG.paypalUrl, '_blank', 'noopener,noreferrer');
@@ -82,7 +85,7 @@ export function PremiumPage() {
           {t.premium.unlocksTitle}
         </h2>
         <ul className="space-y-2.5">
-          {PERKS.map((p, i) => (
+          {perks.map((p, i) => (
             <li key={i} className="flex items-center gap-3 text-sm text-white/80">
               <span className="text-base w-6 text-center">{p.icon}</span>
               <span>{p.text}</span>
@@ -97,7 +100,7 @@ export function PremiumPage() {
           {t.premium.packsTitle}
         </h2>
         <div className="space-y-2">
-          {PACK_PREVIEWS.map(pack => (
+          {packs.map(pack => (
             <div
               key={pack.id}
               className="flex items-center gap-3 rounded-xl px-4 py-3"
@@ -124,11 +127,11 @@ export function PremiumPage() {
             className="btn-blacklace w-full py-4 text-sm tracking-widest flex items-center justify-center gap-2"
           >
             <Heart className="w-4 h-4" />
-            {PREMIUM_CONFIG.membershipLabel.toUpperCase()}
+            {t.premium.membershipLabel.toUpperCase()}
             <ChevronRight className="w-4 h-4" />
           </button>
           <p className="text-center text-xs text-white/30 leading-relaxed">
-            {PREMIUM_CONFIG.membershipTagline}.<br />
+            {t.premium.membershipTagline}.<br />
             {t.premium.support}
           </p>
         </div>
@@ -149,7 +152,7 @@ export function PremiumPage() {
             onClick={handleRevoke}
             className="w-full py-1.5 rounded-xl text-[10px] text-white/15 hover:text-white/30 transition-colors"
           >
-            [DEV] Désactiver le premium
+            {t.premium.devRevoke}
           </button>
         )}
       </div>

@@ -2,6 +2,7 @@ import { useLocation } from 'wouter';
 import { Lock } from 'lucide-react';
 import type { Pack } from '../types/packs';
 import { isPackUnlocked } from '../config/premium';
+import { useT } from '../i18n';
 
 interface PackSelectorProps {
   packs: Pack[];
@@ -23,6 +24,7 @@ const DEFAULT_ACCENT = PACK_ACCENT['standard']!;
 
 export function PackSelector({ packs, selectedPackId, onSelect, disabled }: PackSelectorProps) {
   const [, navigate] = useLocation();
+  const { t } = useT();
   const selectedPack = packs.find(p => p.id === selectedPackId);
 
   function handlePackClick(packId: string) {
@@ -35,11 +37,6 @@ export function PackSelector({ packs, selectedPackId, onSelect, disabled }: Pack
   }
 
   return (
-    /*
-     * -mx-4 sm:mx-0 — le wrapper dépasse dans les marges du Layout sur mobile,
-     * ce qui permet au scroll horizontal de couvrir toute la largeur de l'écran.
-     * px-4 / pr-4 rétablit un départ et une fin corrects dans la zone scrollable.
-     */
     <div className="w-full -mx-4 sm:mx-0 space-y-2">
       <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar px-4 sm:px-0 pr-6 sm:pr-0">
         {packs.map(pack => {
@@ -53,7 +50,7 @@ export function PackSelector({ packs, selectedPackId, onSelect, disabled }: Pack
               data-testid={`pack-${pack.id}`}
               onClick={() => handlePackClick(pack.id)}
               disabled={disabled}
-              aria-label={`${pack.title}${unlocked ? '' : ' (Premium requis)'}`}
+              aria-label={`${pack.title}${unlocked ? '' : ` (${t.game.premiumRequired})`}`}
               className={[
                 'relative flex-shrink-0 flex items-center gap-1.5',
                 'px-4 py-1.5 rounded-full border text-xs font-semibold whitespace-nowrap',
@@ -77,7 +74,7 @@ export function PackSelector({ packs, selectedPackId, onSelect, disabled }: Pack
         <p className="text-xs text-muted-foreground px-4 sm:px-0 truncate">
           {isPackUnlocked(selectedPack.id)
             ? selectedPack.description
-            : '🔒 Pack Premium — Rejoindre le Feuch Institute pour débloquer'}
+            : t.game.packLocked}
         </p>
       )}
     </div>
