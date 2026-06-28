@@ -12,7 +12,7 @@ export const es = {
     ],
     victoryIf: 'Si sacas 420 →', victoryResult: 'Ganas la ronda inmediatamente.', elseIf: 'Si no →', elseResult: 'El pack elegido te da tu penitencia.', next: 'SIGUIENTE', start: '¡VAMOS!', skip: 'Saltar',
   },
-  result: { jackpotTitle: '¡Jackpot — 420!', jackpotSub: 'El Feuch valida esta experiencia', trophy: 'TROFEO', newRound: 'NUEVA RONDA', copy: 'Copiar penitencia', copied: '¡Copiado!' },
+  result: { jackpotTitle: '¡Jackpot — 420!', jackpotSub: 'El Feuch valida esta experiencia', trophy: 'TROFEO', newRound: 'NUEVA RONDA', share: 'Compartir', shared: '¡Reto compartido!', copied: 'Reto copiado al portapapeles.' },
   roll: { first: '¡LANZAR!', last: 'ÚLTIMO LANZAMIENTO', again: 'RELANZAR', notYet: 'Aún sin lanzar', counter: (n: number, max: number) => `Lanzamiento ${n} / ${max}`, seeResult: 'VER EL RESULTADO →' },
   settings: {
     title: 'Ajustes', subtitle: 'Personaliza tu experiencia Blacklace', sections: { audio: 'Audio', tutorial: 'Tutorial', data: 'Datos', appearance: 'Apariencia', language: 'Idioma' },
