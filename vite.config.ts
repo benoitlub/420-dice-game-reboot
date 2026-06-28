@@ -5,7 +5,7 @@ import path from "path";
 
 const isReplit = process.env.REPL_ID !== undefined;
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-const basePath = process.env.BASE_PATH ?? "/420dicegame/";
+const basePath = process.env.BASE_PATH ?? "/420-dice-game-reboot/";
 
 export default defineConfig({
   base: basePath,
