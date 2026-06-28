@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Dices, Trophy, BarChart2, Sun, Moon } from 'lucide-react';
+import { Dices, Trophy, BarChart2, Sun, Moon, Eye, X } from 'lucide-react';
 import { HeaderMenu } from './HeaderMenu';
 import { useT, type Locale } from '../i18n';
 import { useTheme } from '../contexts/theme';
+import { activatePremium, deactivatePremium, isPremium } from '../config/premium';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,12 +17,58 @@ export function Layout({ children, onShowHelp }: LayoutProps) {
   const [location] = useLocation();
   const { t, locale, setLocale } = useT();
   const { theme, toggleTheme } = useTheme();
+  const [heroClicks, setHeroClicks] = useState(0);
+  const [debugOpen, setDebugOpen] = useState(false);
+  const [premiumTest, setPremiumTest] = useState(isPremium());
 
   const NAV_ITEMS = [
     { path: '/',         icon: Dices,     label: t.nav.game     },
     { path: '/trophies', icon: Trophy,    label: t.nav.trophies },
     { path: '/stats',    icon: BarChart2, label: t.nav.stats    },
   ];
+
+  function handleHeroSecretClick(event: React.MouseEvent) {
+    event.preventDefault();
+    const next = heroClicks + 1;
+    if (next >= 6) {
+      setHeroClicks(0);
+      setDebugOpen(true);
+      return;
+    }
+    setHeroClicks(next);
+    window.setTimeout(() => setHeroClicks(0), 2200);
+  }
+
+  function enablePremiumTest() {
+    activatePremium();
+    setPremiumTest(true);
+  }
+
+  function disablePremiumTest() {
+    deactivatePremium();
+    setPremiumTest(false);
+  }
+
+  function clearLocalCache() {
+    const keepTheme = localStorage.getItem('bl_theme_v1');
+    const keepLocale = localStorage.getItem('bl_locale_v1');
+    localStorage.clear();
+    if (keepTheme) localStorage.setItem('bl_theme_v1', keepTheme);
+    if (keepLocale) localStorage.setItem('bl_locale_v1', keepLocale);
+    setPremiumTest(false);
+    setDebugOpen(false);
+    window.location.reload();
+  }
+
+  function resetTutorialAndStats() {
+    Object.keys(localStorage).forEach((key) => {
+      if (key.includes('stats') || key.includes('troph') || key.includes('onboarding')) {
+        localStorage.removeItem(key);
+      }
+    });
+    setDebugOpen(false);
+    window.location.reload();
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -40,12 +88,22 @@ export function Layout({ children, onShowHelp }: LayoutProps) {
           {/* Logo */}
           <Link href="/">
             <div className="cursor-pointer min-w-0">
-              <h1 className="text-xl font-bold font-serif leading-tight tracking-wide text-gradient-bl">
-                420 DICE GAME
-              </h1>
-              <p className="text-[10px] text-white/30 leading-none tracking-[.12em] uppercase">
-                {t.header.subtitle}
-              </p>
+              <button
+                type="button"
+                onClick={handleHeroSecretClick}
+                className="flex items-center gap-2 text-left"
+                aria-label="420 Dice Game"
+              >
+                <Eye className="w-4 h-4 text-fuchsia-300/70 drop-shadow-[0_0_6px_rgba(217,70,239,.55)]" />
+                <div>
+                  <h1 className="text-xl font-bold font-serif leading-tight tracking-wide text-gradient-bl">
+                    420 DICE GAME
+                  </h1>
+                  <p className="text-[10px] text-white/30 leading-none tracking-[.12em] uppercase">
+                    {t.header.subtitle}
+                  </p>
+                </div>
+              </button>
             </div>
           </Link>
 
@@ -95,6 +153,42 @@ export function Layout({ children, onShowHelp }: LayoutProps) {
           </div>
         </div>
       </header>
+
+      {debugOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/55 backdrop-blur-sm animate-fade-in">
+          <div className="card-glass rounded-3xl p-5 w-full max-w-sm space-y-4">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs uppercase tracking-[.22em] text-fuchsia-300/70 font-bold">Debug Blacklace</p>
+                <h2 className="font-serif text-2xl font-bold text-gradient-bl">Œil du labo</h2>
+                <p className="text-xs text-white/45 mt-1">Menu caché de test local.</p>
+              </div>
+              <button onClick={() => setDebugOpen(false)} className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/60">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="grid gap-2">
+              <button onClick={enablePremiumTest} className="btn-blacklace py-3 text-xs uppercase tracking-widest">
+                Activer Premium test
+              </button>
+              <button onClick={disablePremiumTest} className="rounded-xl border border-white/10 py-3 text-xs text-white/70 hover:border-fuchsia-400/30">
+                Désactiver Premium test
+              </button>
+              <button onClick={resetTutorialAndStats} className="rounded-xl border border-white/10 py-3 text-xs text-white/70 hover:border-fuchsia-400/30">
+                Réinitialiser stats + tutoriel
+              </button>
+              <button onClick={clearLocalCache} className="rounded-xl border border-rose-400/20 py-3 text-xs text-rose-200/80 hover:border-rose-400/40">
+                Vider le cache local
+              </button>
+            </div>
+
+            <p className="text-center text-[10px] text-white/30">
+              Premium test : {premiumTest ? 'actif' : 'inactif'} · 6 clics sur l’œil pour revenir ici.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* ─── Contenu principal ─────────────────────────────────────── */}
       <main className="flex-1 overflow-y-auto">
