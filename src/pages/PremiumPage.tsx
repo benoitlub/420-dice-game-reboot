@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Sparkles, Lock, Unlock, ChevronRight, Heart } from 'lucide-react';
-import { PREMIUM_CONFIG, isPremium, activatePremium, deactivatePremium } from '../config/premium';
+import { Sparkles, Lock, Unlock, ChevronRight, CreditCard } from 'lucide-react';
+import { PREMIUM_CONFIG, isPremium } from '../config/premium';
 import { useT } from '../i18n';
 
 const PACK_IDS = [
@@ -11,12 +11,13 @@ const PACK_IDS = [
   { id: 'apero',         name: 'Mission Apéro',        emoji: '🥂' },
 ];
 
-const PERK_ICONS = ['🎲', '🎭', '✨', '🏅', '🔮', '❤️'];
+const PERK_ICONS = ['🎲', '🧪', '🏆', '✨', '🚀', '❤️'];
 
 export function PremiumPage() {
-  const [premium, setPremium] = useState(isPremium());
-  const [restored, setRestored] = useState(false);
+  const [premium] = useState(isPremium());
+  const [notice, setNotice] = useState(false);
   const { t } = useT();
+  const paymentReady = Boolean(PREMIUM_CONFIG.paymentUrl);
 
   const packs = PACK_IDS.map(p => ({
     ...p,
@@ -28,26 +29,22 @@ export function PremiumPage() {
     text,
   }));
 
-  function handleOpenPayPal() {
-    window.open(PREMIUM_CONFIG.paypalUrl, '_blank', 'noopener,noreferrer');
+  function handleOpenPayment() {
+    if (!paymentReady) {
+      setNotice(true);
+      setTimeout(() => setNotice(false), 3000);
+      return;
+    }
+    window.open(PREMIUM_CONFIG.paymentUrl, '_blank', 'noopener,noreferrer');
   }
 
   function handleRestore() {
-    activatePremium();
-    setPremium(true);
-    setRestored(true);
-    setTimeout(() => setRestored(false), 3000);
-  }
-
-  function handleRevoke() {
-    deactivatePremium();
-    setPremium(false);
+    setNotice(true);
+    setTimeout(() => setNotice(false), 3000);
   }
 
   return (
     <div className="space-y-6 animate-fade-in">
-
-      {/* ─── En-tête ─────────────────────────────────────────────── */}
       <div className="text-center space-y-2 pt-2">
         <div
           className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3"
@@ -59,13 +56,21 @@ export function PremiumPage() {
         >
           <Sparkles className="w-6 h-6 text-fuchsia-300" />
         </div>
-        <h1 className="font-serif text-2xl font-bold text-gradient-bl">Feuch Institute</h1>
+        <p className="text-xs uppercase tracking-[.28em] text-fuchsia-300/70 font-bold">
+          {t.premium.productKicker}
+        </p>
+        <h1 className="font-serif text-2xl font-bold text-gradient-bl">{t.premium.productTitle}</h1>
         <p className="text-sm text-white/55 leading-relaxed max-w-xs mx-auto">
           {premium ? t.premium.subtitleActive : t.premium.subtitleInactive}
         </p>
       </div>
 
-      {/* ─── Statut actuel ───────────────────────────────────────── */}
+      <div className="card-glass rounded-3xl p-5 text-center space-y-2">
+        <p className="text-xs text-white/45 uppercase tracking-[.18em]">{t.premium.oneTimePayment}</p>
+        <p className="font-serif text-5xl font-bold text-gradient-jackpot">{PREMIUM_CONFIG.priceLabel}</p>
+        <p className="text-xs text-white/45">{t.premium.lifetime}</p>
+      </div>
+
       {premium && (
         <div
           className="flex items-center gap-3 rounded-2xl px-4 py-3"
@@ -79,7 +84,6 @@ export function PremiumPage() {
         </div>
       )}
 
-      {/* ─── Avantages ───────────────────────────────────────────── */}
       <div className="card-glass rounded-2xl p-4 space-y-3">
         <h2 className="font-serif text-sm font-bold text-white/60 uppercase tracking-widest">
           {t.premium.unlocksTitle}
@@ -94,7 +98,6 @@ export function PremiumPage() {
         </ul>
       </div>
 
-      {/* ─── Aperçu des packs ────────────────────────────────────── */}
       <div className="space-y-2">
         <h2 className="font-serif text-sm font-bold text-white/60 uppercase tracking-widest px-1">
           {t.premium.packsTitle}
@@ -119,41 +122,36 @@ export function PremiumPage() {
         </div>
       </div>
 
-      {/* ─── CTA ─────────────────────────────────────────────────── */}
       {!premium && (
         <div className="space-y-3">
           <button
-            onClick={handleOpenPayPal}
+            onClick={handleOpenPayment}
             className="btn-blacklace w-full py-4 text-sm tracking-widest flex items-center justify-center gap-2"
           >
-            <Heart className="w-4 h-4" />
-            {t.premium.membershipLabel.toUpperCase()}
+            <CreditCard className="w-4 h-4" />
+            {t.premium.cta(PREMIUM_CONFIG.priceLabel).toUpperCase()}
             <ChevronRight className="w-4 h-4" />
           </button>
-          <p className="text-center text-xs text-white/30 leading-relaxed">
-            {t.premium.membershipTagline}.<br />
+          <p className="text-center text-xs text-white/35 leading-relaxed">
+            {paymentReady ? t.premium.membershipTagline : t.premium.paymentSoon}<br />
             {t.premium.support}
           </p>
         </div>
       )}
 
-      {/* ─── Restaurer ───────────────────────────────────────────── */}
       <div className="space-y-2">
         <button
           onClick={handleRestore}
           disabled={premium}
           className="w-full py-2.5 rounded-xl text-xs font-semibold text-white/35 border border-white/8 hover:border-violet-400/30 hover:text-white/55 transition-all disabled:opacity-30 disabled:cursor-default"
         >
-          {restored ? t.premium.restored : t.premium.restore}
+          {t.premium.restore}
         </button>
 
-        {import.meta.env.DEV && premium && (
-          <button
-            onClick={handleRevoke}
-            className="w-full py-1.5 rounded-xl text-[10px] text-white/15 hover:text-white/30 transition-colors"
-          >
-            {t.premium.devRevoke}
-          </button>
+        {notice && (
+          <p className="text-center text-xs text-fuchsia-200/80">
+            {t.premium.restoreSoon}
+          </p>
         )}
       </div>
 
