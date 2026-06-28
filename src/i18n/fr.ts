@@ -38,8 +38,9 @@ export const fr = {
     jackpotSub: 'Le Feuch valide cette expérience',
     trophy: 'TROPHÉE',
     newRound: 'NOUVELLE MANCHE',
-    copy: 'Copier le gage',
-    copied: 'Copié !',
+    share: 'Partager',
+    shared: 'Défi partagé !',
+    copied: 'Défi copié dans le presse-papiers.',
   },
   roll: {
     first: 'LANCER !',
