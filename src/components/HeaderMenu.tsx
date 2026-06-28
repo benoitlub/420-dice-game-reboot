@@ -66,7 +66,7 @@ export function HeaderMenu({ onShowHelp }: HeaderMenuProps) {
     {
       icon: <Home className="w-4 h-4" />,
       label: t.menu.home,
-      action: () => { setOpen(false); window.open('https://blacklace.fr', '_blank', 'noopener,noreferrer'); },
+      action: () => { setOpen(false); window.open('https://benoitlub.github.io/bazar-du-feuch/', '_blank', 'noopener,noreferrer'); },
       dividerAfter: true,
     },
     {
