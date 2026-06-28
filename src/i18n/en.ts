@@ -12,7 +12,7 @@ export const en = {
     ],
     victoryIf: 'If you roll 420 →', victoryResult: 'You win the round immediately.', elseIf: 'Otherwise →', elseResult: 'The chosen pack gives you your forfeit.', next: 'NEXT', start: "LET'S GO!", skip: 'Skip',
   },
-  result: { jackpotTitle: 'Jackpot — 420!', jackpotSub: 'The Feuch validates this experience', trophy: 'TROPHY', newRound: 'NEW ROUND', copy: 'Copy forfeit', copied: 'Copied!' },
+  result: { jackpotTitle: 'Jackpot — 420!', jackpotSub: 'The Feuch validates this experience', trophy: 'TROPHY', newRound: 'NEW ROUND', share: 'Share', shared: 'Challenge shared!', copied: 'Challenge copied to clipboard.' },
   roll: { first: 'ROLL!', last: 'LAST ROLL', again: 'REROLL', notYet: 'Not rolled yet', counter: (n: number, max: number) => `Roll ${n} / ${max}`, seeResult: 'SEE RESULT →' },
   settings: {
     title: 'Settings', subtitle: 'Customize your Blacklace experience', sections: { audio: 'Audio', tutorial: 'Tutorial', data: 'Data', appearance: 'Appearance', language: 'Language' },
