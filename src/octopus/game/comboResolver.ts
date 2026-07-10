@@ -1,5 +1,5 @@
 import type { Die, DieFace, ComboResult } from '../../types/game';
-import type { Pack, ComboRule } from '../../types/packs';
+import type { Pack } from '../../types/packs';
 import { pickRandom } from '../core/random';
 
 export function is420(faces: DieFace[]): boolean {
@@ -17,13 +17,58 @@ function facesMatch(ruleFaces: string[], diceFaces: DieFace[]): boolean {
   return sorted1 === sorted2;
 }
 
-function buildFallback(faces: DieFace[], pack: Pack): ComboResult {
+function isEnglishLocale(): boolean {
+  if (typeof window === 'undefined') return false;
+  const saved = localStorage.getItem('bl_locale_v1');
+  if (saved) return saved === 'en';
+  return navigator.language.slice(0, 2).toLowerCase() === 'en';
+}
+
+function buildFallback(faces: DieFace[]): ComboResult {
   const hasHeart = faces.includes('heart');
   const hasCloud = faces.includes('cloud');
   const hasProhibited = faces.includes('prohibited');
   const has4 = faces.includes('4');
   const has2 = faces.includes('2');
-  const has0 = faces.includes('0');
+  const english = isEnglishLocale();
+
+  if (english) {
+    const fallbacks: ComboResult[] = [
+      {
+        title: 'Mysterious Combo',
+        text: 'Nobody expected this combination. Invent a challenge for everyone at the table.',
+        intensity: 1,
+        type: 'fallback',
+      },
+      {
+        title: 'Unexpected Result',
+        text: 'The dice have spoken, but nobody knows what they meant. The group votes: sip or sing?',
+        intensity: 1,
+        type: 'fallback',
+      },
+      {
+        title: 'Dice Enigma',
+        text: 'No rule covers this combination, so the person on your right decides your fate.',
+        intensity: 2,
+        type: 'fallback',
+      },
+    ];
+
+    if (hasHeart && hasCloud) {
+      return { title: 'Cloudy Romance', text: 'Describe your ideal ex in ten words without laughing.', intensity: 2, type: 'fallback' };
+    }
+    if (hasProhibited && faces.includes('0')) {
+      return { title: 'The Forbidden Void', text: 'Hold eye contact with someone for ten seconds without smiling.', intensity: 2, type: 'fallback' };
+    }
+    if (has4 && hasHeart) {
+      return { title: 'Four Hearts', text: 'Say something sincere to the person on your left.', intensity: 1, type: 'fallback' };
+    }
+    if (has2 && hasCloud) {
+      return { title: 'Double Haze', text: 'Talk for thirty seconds about a subject you know nothing about while pretending to be an expert.', intensity: 2, type: 'fallback' };
+    }
+
+    return pickRandom(fallbacks);
+  }
 
   const fallbacks: ComboResult[] = [
     {
@@ -49,7 +94,7 @@ function buildFallback(faces: DieFace[], pack: Pack): ComboResult {
   if (hasHeart && hasCloud) {
     return { title: 'Romance Nuageuse', text: 'Décris ton ex idéal(e) en 10 mots, sans rire.', intensity: 2, type: 'fallback' };
   }
-  if (hasProhibited && has0) {
+  if (hasProhibited && faces.includes('0')) {
     return { title: 'Le Vide Interdit', text: 'Fixe quelqu\'un dans les yeux pendant 10 secondes sans sourire.', intensity: 2, type: 'fallback' };
   }
   if (has4 && hasHeart) {
@@ -77,13 +122,21 @@ export function resolveCombo(dice: Die[], pack: Pack): ComboResult {
         trophyEarned: 'first420',
       };
     }
-    return {
-      title: '420 — Jackpot !',
-      text: 'Tu as obtenu le légendaire 420 ! Trophée de la manche, tu es le roi ou la reine de cette table.',
-      intensity: 3,
-      type: 'jackpot',
-      trophyEarned: 'first420',
-    };
+    return isEnglishLocale()
+      ? {
+          title: '420 — Jackpot!',
+          text: 'You rolled the legendary 420! You win the round and the table crowns you its champion.',
+          intensity: 3,
+          type: 'jackpot',
+          trophyEarned: 'first420',
+        }
+      : {
+          title: '420 — Jackpot !',
+          text: 'Tu as obtenu le légendaire 420 ! Trophée de la manche, tu es le roi ou la reine de cette table.',
+          intensity: 3,
+          type: 'jackpot',
+          trophyEarned: 'first420',
+        };
   }
 
   if (isTriple(faces)) {
@@ -123,5 +176,5 @@ export function resolveCombo(dice: Die[], pack: Pack): ComboResult {
     };
   }
 
-  return buildFallback(faces, pack);
+  return buildFallback(faces);
 }
