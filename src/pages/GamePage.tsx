@@ -4,8 +4,8 @@ import { RollControls } from '../components/RollControls';
 import { PackSelector } from '../components/PackSelector';
 import { ResultModal } from '../components/ResultModal';
 import { PersonaBubble } from '../components/PersonaBubble';
-import { OpeningChallengeAssistant } from '../components/OpeningChallengeAssistant';
-import type { ChallengeSuggestion } from '../adapters/octopusChallengeAdapter';
+import { requestPostRollChallenge } from '../adapters/postRollChallengeAdapter';
+import type { PostRollChallenge, PostRollChallengeResponse } from '../adapters/postRollChallengeAdapter';
 import {
   octopusEngine,
   createInitialState,
@@ -31,7 +31,6 @@ import { pickRandom } from '../octopus';
 import { useT } from '../i18n';
 
 const ROLL_ANIMATION_MS = 700;
-const OPENING_CHALLENGE_KEY = '420dice:selected-opening-challenge:v1';
 
 function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPersona>) {
   const pack = loadPack(rolled.selectedPack);
@@ -58,39 +57,48 @@ function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPe
   }
 
   const narratorComment = getCommentForResult(result, persona);
-
   return { result, narratorComment };
 }
 
 export function GamePage() {
   const { t } = useT();
   const packs = getAvailablePacks();
-  const [gameState, setGameState] = useState<GameState>(() =>
-    createInitialState('standard')
-  );
+  const [gameState, setGameState] = useState<GameState>(() => createInitialState('standard'));
   const [isRolling, setIsRolling] = useState(false);
   const [persona] = useState<Persona>(() => pickRandomPersona());
   const [comment, setComment] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [openingChallenge, setOpeningChallenge] = useState<ChallengeSuggestion | null>(() => {
-    try {
-      const stored = localStorage.getItem(OPENING_CHALLENGE_KEY);
-      return stored ? JSON.parse(stored) as ChallengeSuggestion : null;
-    } catch {
-      return null;
-    }
-  });
+  const [postRollChallenge, setPostRollChallenge] = useState<PostRollChallenge | null>(null);
+  const [challengeStatus, setChallengeStatus] = useState<PostRollChallengeResponse['status'] | null>(null);
+  const [challengeLatency, setChallengeLatency] = useState<number | null>(null);
+  const [challengeLoading, setChallengeLoading] = useState(false);
   const rollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const challengeRequestRef = useRef(0);
 
-  const handleOpeningChallenge = useCallback((challenge: ChallengeSuggestion) => {
-    setOpeningChallenge(challenge);
-    localStorage.setItem(OPENING_CHALLENGE_KEY, JSON.stringify(challenge));
-    setComment(`Premier gage choisi : ${challenge.text}`);
-  }, []);
+  const generateChallengeForRound = useCallback(async (state: GameState) => {
+    if (!state.currentResult) return;
 
-  const clearOpeningChallenge = useCallback(() => {
-    setOpeningChallenge(null);
-    localStorage.removeItem(OPENING_CHALLENGE_KEY);
+    const requestId = ++challengeRequestRef.current;
+    setChallengeLoading(true);
+    setPostRollChallenge(null);
+    setChallengeStatus(null);
+    setChallengeLatency(null);
+
+    const response = await requestPostRollChallenge({
+      packId: state.selectedPack,
+      resultTitle: state.currentResult.title,
+      resultText: state.currentResult.text,
+      resultType: state.currentResult.type,
+      dice: state.dice.map(die => String(die.face)),
+      won: state.jackpot,
+      language: 'fr',
+    });
+
+    if (requestId !== challengeRequestRef.current) return;
+    setPostRollChallenge(response.challenge);
+    setChallengeStatus(response.status);
+    setChallengeLatency(response.latencyMs);
+    setChallengeLoading(false);
   }, []);
 
   const handleRoll = useCallback(() => {
@@ -114,7 +122,6 @@ export function GamePage() {
         if (prev.roundPhase === 'VICTORY' || prev.roundPhase === 'DEFEAT') return prev;
 
         const rolled = octopusEngine.roll(prev);
-
         const won = is420(rolled.dice.map(d => d.face));
         const isLastRoll = rolled.rollCount >= rolled.maxRolls;
 
@@ -132,14 +139,14 @@ export function GamePage() {
 
           setComment(narratorComment);
           setTimeout(() => setShowModal(true), 80);
-
+          void generateChallengeForRound(finalState);
           return finalState;
         }
 
         return rolled;
       });
     }, ROLL_ANIMATION_MS);
-  }, [isRolling, gameState, persona]);
+  }, [isRolling, gameState, persona, generateChallengeForRound]);
 
   const handleLockDie = useCallback(
     (id: number) => {
@@ -155,8 +162,13 @@ export function GamePage() {
   );
 
   const handleNewRound = useCallback(() => {
+    challengeRequestRef.current += 1;
     setShowModal(false);
     setGameState(createInitialState(gameState.selectedPack));
+    setPostRollChallenge(null);
+    setChallengeStatus(null);
+    setChallengeLatency(null);
+    setChallengeLoading(false);
 
     playNewRound();
     if (Math.random() < 0.60) {
@@ -187,8 +199,7 @@ export function GamePage() {
     gameState.roundPhase === 'VICTORY' ||
     gameState.roundPhase === 'DEFEAT';
 
-  const showLockHint =
-    gameState.roundPhase === 'WAITING_SELECTION' && !isRolling;
+  const showLockHint = gameState.roundPhase === 'WAITING_SELECTION' && !isRolling;
 
   const showPersonaBubble =
     comment && !showModal &&
@@ -197,21 +208,6 @@ export function GamePage() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <OpeningChallengeAssistant onSelect={handleOpeningChallenge} />
-
-        {openingChallenge && (
-          <section className="rounded-2xl border border-amber-400/25 bg-amber-500/10 px-4 py-3">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-[11px] uppercase tracking-[.18em] text-amber-300">Gage de démarrage</p>
-                <strong className="block mt-1 text-white">{openingChallenge.title}</strong>
-                <p className="text-sm text-white/70 mt-1 leading-relaxed">{openingChallenge.text}</p>
-              </div>
-              <button type="button" onClick={clearOpeningChallenge} className="text-xs text-white/40 hover:text-white">Changer</button>
-            </div>
-          </section>
-        )}
-
         <PackSelector
           packs={packs}
           selectedPackId={gameState.selectedPack}
@@ -243,6 +239,25 @@ export function GamePage() {
             disabled={isRolling}
           />
         </div>
+
+        {gameState.roundOver && (
+          <section className="rounded-2xl border border-fuchsia-400/25 bg-fuchsia-500/10 px-4 py-4">
+            <p className="text-[11px] uppercase tracking-[.18em] text-fuchsia-300">Gérard après le tirage</p>
+            {challengeLoading && <p className="mt-2 text-sm text-white/65">🐙 Gérard transforme le résultat en gage…</p>}
+            {!challengeLoading && postRollChallenge && (
+              <div className="mt-2">
+                <div className="flex items-center justify-between gap-3">
+                  <strong className="text-white">{postRollChallenge.title}</strong>
+                  <span className="text-xs text-white/40">{'⚡'.repeat(postRollChallenge.intensity)}</span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-white/75">{postRollChallenge.text}</p>
+                <p className="mt-2 text-[11px] text-white/40">
+                  {challengeStatus === 'connected' ? `Octopus · ${challengeLatency ?? 0} ms` : 'Mode local · Octopus indisponible'}
+                </p>
+              </div>
+            )}
+          </section>
+        )}
 
         {showPersonaBubble && (
           <PersonaBubble persona={persona} comment={comment} />
