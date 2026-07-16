@@ -4,6 +4,8 @@ import { RollControls } from '../components/RollControls';
 import { PackSelector } from '../components/PackSelector';
 import { ResultModal } from '../components/ResultModal';
 import { PersonaBubble } from '../components/PersonaBubble';
+import { OpeningChallengeAssistant } from '../components/OpeningChallengeAssistant';
+import type { ChallengeSuggestion } from '../adapters/octopusChallengeAdapter';
 import {
   octopusEngine,
   createInitialState,
@@ -29,8 +31,7 @@ import { pickRandom } from '../octopus';
 import { useT } from '../i18n';
 
 const ROLL_ANIMATION_MS = 700;
-
-/* ─── Résolution de manche ────────────────────────────────────────── */
+const OPENING_CHALLENGE_KEY = '420dice:selected-opening-challenge:v1';
 
 function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPersona>) {
   const pack = loadPack(rolled.selectedPack);
@@ -61,8 +62,6 @@ function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPe
   return { result, narratorComment };
 }
 
-/* ─── Page ────────────────────────────────────────────────────────── */
-
 export function GamePage() {
   const { t } = useT();
   const packs = getAvailablePacks();
@@ -73,7 +72,26 @@ export function GamePage() {
   const [persona] = useState<Persona>(() => pickRandomPersona());
   const [comment, setComment] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [openingChallenge, setOpeningChallenge] = useState<ChallengeSuggestion | null>(() => {
+    try {
+      const stored = localStorage.getItem(OPENING_CHALLENGE_KEY);
+      return stored ? JSON.parse(stored) as ChallengeSuggestion : null;
+    } catch {
+      return null;
+    }
+  });
   const rollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleOpeningChallenge = useCallback((challenge: ChallengeSuggestion) => {
+    setOpeningChallenge(challenge);
+    localStorage.setItem(OPENING_CHALLENGE_KEY, JSON.stringify(challenge));
+    setComment(`Premier gage choisi : ${challenge.text}`);
+  }, []);
+
+  const clearOpeningChallenge = useCallback(() => {
+    setOpeningChallenge(null);
+    localStorage.removeItem(OPENING_CHALLENGE_KEY);
+  }, []);
 
   const handleRoll = useCallback(() => {
     if (isRolling) return;
@@ -179,6 +197,21 @@ export function GamePage() {
   return (
     <>
       <div className="flex flex-col gap-4">
+        <OpeningChallengeAssistant onSelect={handleOpeningChallenge} />
+
+        {openingChallenge && (
+          <section className="rounded-2xl border border-amber-400/25 bg-amber-500/10 px-4 py-3">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-[11px] uppercase tracking-[.18em] text-amber-300">Gage de démarrage</p>
+                <strong className="block mt-1 text-white">{openingChallenge.title}</strong>
+                <p className="text-sm text-white/70 mt-1 leading-relaxed">{openingChallenge.text}</p>
+              </div>
+              <button type="button" onClick={clearOpeningChallenge} className="text-xs text-white/40 hover:text-white">Changer</button>
+            </div>
+          </section>
+        )}
+
         <PackSelector
           packs={packs}
           selectedPackId={gameState.selectedPack}
