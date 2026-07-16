@@ -1,15 +1,53 @@
-import type { PostRollChallenge, PostRollChallengeResponse } from '../adapters/postRollChallengeAdapter';
+import { useEffect, useState } from 'react';
 
-interface GerardWitnessProps {
-  visible: boolean;
+type WitnessState = {
   loading: boolean;
-  challenge: PostRollChallenge | null;
-  status: PostRollChallengeResponse['status'] | null;
-  latencyMs: number | null;
+  title: string;
+  text: string;
+  source: string;
+};
+
+const INITIAL_STATE: WitnessState = {
+  loading: false,
+  title: 'Gérard est là',
+  text: 'Je laisse les dés parler avant de préparer un gage.',
+  source: 'En attente du tirage',
+};
+
+function readPostRollState(): WitnessState {
+  const sections = Array.from(document.querySelectorAll('section'));
+  const section = sections.find(node => node.textContent?.includes('Gérard après le tirage'));
+  if (!section) return INITIAL_STATE;
+
+  const content = section.textContent || '';
+  if (content.includes('transforme le résultat en gage')) {
+    return {
+      loading: true,
+      title: 'Gérard réfléchit',
+      text: 'Je transforme ce tirage en gage…',
+      source: 'Octopus en cours',
+    };
+  }
+
+  const title = section.querySelector('strong')?.textContent?.trim() || 'Gage prêt';
+  const paragraphs = Array.from(section.querySelectorAll('p')).map(node => node.textContent?.trim() || '');
+  const text = paragraphs.find(value => value && !value.includes('Gérard après le tirage') && !value.includes('Octopus ·') && !value.includes('Mode local')) || 'Le gage est prêt.';
+  const source = paragraphs.find(value => value.includes('Octopus ·') || value.includes('Mode local')) || 'Résultat reçu';
+
+  return { loading: false, title, text, source };
 }
 
-export function GerardWitness({ visible, loading, challenge, status, latencyMs }: GerardWitnessProps) {
-  if (!visible) return null;
+export function GerardWitness() {
+  const [state, setState] = useState<WitnessState>(INITIAL_STATE);
+
+  useEffect(() => {
+    const sync = () => setState(readPostRollState());
+    sync();
+
+    const observer = new MutationObserver(sync);
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <aside
@@ -25,24 +63,9 @@ export function GerardWitness({ visible, loading, challenge, status, latencyMs }
             <strong className="text-sm text-fuchsia-100">Gérard</strong>
             <span className="text-[10px] uppercase tracking-[.16em] text-white/35">Octopus</span>
           </div>
-
-          {loading && (
-            <p className="mt-1 text-sm leading-snug text-white/65">Je transforme ce tirage en gage…</p>
-          )}
-
-          {!loading && challenge && (
-            <div className="mt-1">
-              <p className="text-sm font-semibold text-white">{challenge.title}</p>
-              <p className="mt-1 line-clamp-3 text-xs leading-relaxed text-white/65">{challenge.text}</p>
-              <p className="mt-1 text-[10px] text-white/35">
-                {status === 'connected' ? `Octopus · ${latencyMs ?? 0} ms` : 'Mode local de secours'}
-              </p>
-            </div>
-          )}
-
-          {!loading && !challenge && (
-            <p className="mt-1 text-sm leading-snug text-white/55">J’attends que les dés aient parlé.</p>
-          )}
+          <p className="mt-1 text-sm font-semibold text-white">{state.title}</p>
+          <p className="mt-1 line-clamp-3 text-xs leading-relaxed text-white/65">{state.text}</p>
+          <p className="mt-1 text-[10px] text-white/35">{state.loading ? 'Connexion en cours…' : state.source}</p>
         </div>
       </div>
     </aside>
