@@ -61,7 +61,7 @@ function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPe
 }
 
 export function GamePage() {
-  const { t } = useT();
+  const { t, locale } = useT();
   const packs = getAvailablePacks();
   const [gameState, setGameState] = useState<GameState>(() => createInitialState('standard'));
   const [isRolling, setIsRolling] = useState(false);
@@ -89,14 +89,14 @@ export function GamePage() {
       resultType: state.currentResult.type,
       dice: state.dice.map(die => String(die.face)),
       won: state.jackpot,
-      language: 'fr',
+      language: locale,
     });
 
     if (requestId !== challengeRequestRef.current) return;
     setPostRollChallenge(response.challenge);
     setChallengeStatus(response.status);
     setChallengeLoading(false);
-  }, []);
+  }, [locale]);
 
   const handleRoll = useCallback(() => {
     if (isRolling) return;
