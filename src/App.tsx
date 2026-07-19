@@ -7,7 +7,6 @@ import { StatsPage } from './pages/StatsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { PremiumPage } from './pages/PremiumPage';
 import { OnboardingModal } from './components/OnboardingModal';
-import { GerardWitness } from './components/GerardWitness';
 import { I18nProvider, useT } from './i18n';
 import { ThemeProvider } from './contexts/theme';
 
@@ -55,7 +54,6 @@ function AppInner() {
         </Switch>
       </Layout>
 
-      <GerardWitness />
       {showOnboarding && <OnboardingModal onClose={completeOnboarding} />}
     </WouterRouter>
   );
