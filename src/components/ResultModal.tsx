@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Share2, Check } from 'lucide-react';
 import type { ComboResult, Die } from '../types/game';
 import type { Persona } from '../types/personas';
+import type { PostRollChallenge, PostRollChallengeResponse } from '../adapters/postRollChallengeAdapter';
 import { FACE_SYMBOL_LABELS, FACE_DISPLAY_COLOR } from './Dice';
 import { playVictory, playOverlayOpen } from '../octopus/audio/soundEngine';
 import { useT } from '../i18n';
@@ -11,6 +12,9 @@ interface ResultModalProps {
   dice: Die[];
   persona: Persona | null;
   comment: string | null;
+  octopusChallenge?: PostRollChallenge | null;
+  octopusStatus?: PostRollChallengeResponse['status'] | null;
+  octopusLoading?: boolean;
   onNewRound: () => void;
   onClose: () => void;
 }
@@ -50,18 +54,29 @@ const PARTICLE_CONFIGS = [
   { top: '50%', left:  '88%', color: 'bg-violet-300',   delay: '30ms',  size: 'w-1.5 h-1.5' },
 ];
 
-export function ResultModal({ result, dice, persona, comment, onNewRound, onClose }: ResultModalProps) {
+export function ResultModal({
+  result,
+  dice,
+  persona,
+  comment,
+  octopusChallenge,
+  octopusStatus,
+  octopusLoading = false,
+  onNewRound,
+  onClose,
+}: ResultModalProps) {
   const [shareState, setShareState] = useState<'idle' | 'shared' | 'copied'>('idle');
   const cardRef = useRef<HTMLDivElement>(null);
   const isJackpot = result.type === 'jackpot';
   const { t } = useT();
+  const hasOctopusChallenge = octopusStatus === 'connected' && Boolean(octopusChallenge);
+  const displayedTitle = hasOctopusChallenge ? octopusChallenge!.title : result.title;
+  const displayedText = hasOctopusChallenge ? octopusChallenge!.text : result.text;
+  const displayedIntensity = hasOctopusChallenge ? octopusChallenge!.intensity : result.intensity;
 
   useEffect(() => {
-    if (isJackpot) {
-      playVictory();
-    } else {
-      playOverlayOpen();
-    }
+    if (isJackpot) playVictory();
+    else playOverlayOpen();
   }, [isJackpot]);
 
   function handleBackdropClick(e: React.MouseEvent<HTMLDivElement>) {
@@ -82,7 +97,7 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
   function buildShareText() {
     const heading = persona ? (SHARE_HEADINGS[persona.id] ?? SHARE_HEADINGS.feuch) : SHARE_HEADINGS.feuch;
     const annotation = comment ? `\nAnnotation :\n« ${comment} »\n` : '';
-    return `${heading}\n\n🧪 Feuch Institute\nExpérience 420\n\n🎲 ${result.title}\n\n${result.text}\n${annotation}\n━━━━━━━━━━━━━━━━━━\nRejoins l'expérience :\nhttps://benoitlub.github.io/420-dice-game-reboot/`;
+    return `${heading}\n\n🧪 Feuch Institute\nExpérience 420\n\n🎲 ${displayedTitle}\n\n${displayedText}\n${annotation}\n━━━━━━━━━━━━━━━━━━\nRejoins l'expérience :\nhttps://benoitlub.github.io/420-dice-game-reboot/`;
   }
 
   async function fallbackCopy(text: string) {
@@ -95,10 +110,7 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
     const shareText = buildShareText();
     try {
       if (navigator.share) {
-        await navigator.share({
-          title: '420 Dice Game — Feuch Institute',
-          text: shareText,
-        });
+        await navigator.share({ title: '420 Dice Game — Feuch Institute', text: shareText });
         setShareState('shared');
       } else {
         await fallbackCopy(shareText);
@@ -132,27 +144,15 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
         ].join(' ')}
       >
         {isJackpot && (
-          <div
-            className="absolute inset-0 pointer-events-none overflow-hidden rounded-t-3xl sm:rounded-3xl"
-            aria-hidden="true"
-          >
+          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-t-3xl sm:rounded-3xl" aria-hidden="true">
             {PARTICLE_CONFIGS.map((p, i) => (
-              <span
-                key={i}
-                className={['absolute rounded-full animate-victory-particle', p.color, p.size].join(' ')}
-                style={{ top: p.top, left: p.left, animationDelay: p.delay }}
-              />
+              <span key={i} className={['absolute rounded-full animate-victory-particle', p.color, p.size].join(' ')} style={{ top: p.top, left: p.left, animationDelay: p.delay }} />
             ))}
-            <span
-              className="absolute inset-0 rounded-t-3xl sm:rounded-3xl border-2 border-fuchsia-400/50 animate-victory-ring pointer-events-none"
-              aria-hidden="true"
-            />
+            <span className="absolute inset-0 rounded-t-3xl sm:rounded-3xl border-2 border-fuchsia-400/50 animate-victory-ring pointer-events-none" aria-hidden="true" />
           </div>
         )}
 
-        <div className="flex justify-center pt-3 sm:hidden">
-          <div className="w-10 h-1 rounded-full bg-white/20" />
-        </div>
+        <div className="flex justify-center pt-3 sm:hidden"><div className="w-10 h-1 rounded-full bg-white/20" /></div>
 
         <div className={[
           'px-5 pt-4 pb-4 flex-shrink-0 relative overflow-hidden border-b',
@@ -160,16 +160,11 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
         ].join(' ')}>
           <div className={[
             'absolute inset-0 pointer-events-none',
-            isJackpot
-              ? 'bg-gradient-to-br from-violet-900/60 via-fuchsia-900/40 to-transparent'
-              : 'bg-gradient-to-br from-violet-950/50 to-transparent',
+            isJackpot ? 'bg-gradient-to-br from-violet-900/60 via-fuchsia-900/40 to-transparent' : 'bg-gradient-to-br from-violet-950/50 to-transparent',
           ].join(' ')} />
-
           <div className={[
             'absolute top-0 left-5 right-5 h-px',
-            isJackpot
-              ? 'bg-gradient-to-r from-transparent via-fuchsia-400/60 to-transparent'
-              : 'bg-gradient-to-r from-transparent via-violet-500/40 to-transparent',
+            isJackpot ? 'bg-gradient-to-r from-transparent via-fuchsia-400/60 to-transparent' : 'bg-gradient-to-r from-transparent via-violet-500/40 to-transparent',
           ].join(' ')} />
 
           <div className="relative flex items-center gap-2 mb-3">
@@ -189,51 +184,43 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
             ))}
 
             <div className="ml-auto flex items-center gap-2">
-              {result.trophyEarned && (
-                <span className="text-xs text-amber-300 font-bold tracking-wide">
-                  🏅 {t.result.trophy}
-                </span>
-              )}
+              {result.trophyEarned && <span className="text-xs text-amber-300 font-bold tracking-wide">🏅 {t.result.trophy}</span>}
               <span
-                className={['text-sm font-bold tracking-widest', INTENSITY_COLOR[result.intensity] ?? 'text-muted-foreground'].join(' ')}
-                title={t.aria.intensity(result.intensity)}
+                className={['text-sm font-bold tracking-widest', INTENSITY_COLOR[displayedIntensity] ?? 'text-muted-foreground'].join(' ')}
+                title={t.aria.intensity(displayedIntensity)}
               >
-                {INTENSITY_LABEL[result.intensity]}
+                {INTENSITY_LABEL[displayedIntensity]}
               </span>
             </div>
           </div>
 
           {isJackpot && (
             <div className="relative flex items-center gap-2 mb-2">
-              <span className="text-2xl animate-victory" style={{ filter: 'drop-shadow(0 0 12px rgba(251,191,36,.8))' }}>
-                🏆
-              </span>
+              <span className="text-2xl animate-victory" style={{ filter: 'drop-shadow(0 0 12px rgba(251,191,36,.8))' }}>🏆</span>
               <div>
-                <p className="text-fuchsia-200 text-sm font-black uppercase tracking-[.15em] leading-tight">
-                  {t.result.jackpotTitle}
-                </p>
-                <p className="text-fuchsia-400/70 text-[10px] tracking-widest uppercase">
-                  {t.result.jackpotSub}
-                </p>
+                <p className="text-fuchsia-200 text-sm font-black uppercase tracking-[.15em] leading-tight">{t.result.jackpotTitle}</p>
+                <p className="text-fuchsia-400/70 text-[10px] tracking-widest uppercase">{t.result.jackpotSub}</p>
               </div>
             </div>
           )}
 
           <h2
             data-testid="result-title"
-            className={[
-              'relative font-serif font-bold leading-tight',
-              isJackpot ? 'text-2xl text-gradient-jackpot' : 'text-xl text-gradient-bl',
-            ].join(' ')}
+            className={['relative font-serif font-bold leading-tight', isJackpot ? 'text-2xl text-gradient-jackpot' : 'text-xl text-gradient-bl'].join(' ')}
           >
-            {result.title}
+            {displayedTitle}
           </h2>
         </div>
 
         <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-4 space-y-4 min-h-0">
-          <p data-testid="result-text" className="text-white/90 text-base leading-relaxed">
-            {result.text}
-          </p>
+          <p data-testid="result-text" className="text-white/90 text-base leading-relaxed">{displayedText}</p>
+
+          {octopusLoading && (
+            <p className="text-[11px] text-fuchsia-200/60">🐙 Gérard cherche une variante adaptée au tirage…</p>
+          )}
+          {hasOctopusChallenge && (
+            <p className="text-[11px] uppercase tracking-[.16em] text-fuchsia-300/55">Gage adapté par Octopus</p>
+          )}
 
           {(comment || persona) && (
             <div className="flex items-start gap-3 pt-3 border-t border-white/8">
@@ -244,11 +231,7 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
               )}
               {comment && (
                 <div className="flex-1">
-                  {persona && (
-                    <p className="text-xs text-muted-foreground mb-1 font-semibold tracking-wide">
-                      {persona.name}
-                    </p>
-                  )}
+                  {persona && <p className="text-xs text-muted-foreground mb-1 font-semibold tracking-wide">{persona.name}</p>}
                   <div className="card-glass px-4 py-2.5 rounded-2xl rounded-tl-sm">
                     <p className="text-sm text-white/80 italic leading-snug">{comment}</p>
                   </div>
@@ -262,10 +245,7 @@ export function ResultModal({ result, dice, persona, comment, onNewRound, onClos
           <button
             data-testid="button-new-round"
             onClick={onNewRound}
-            className={[
-              'w-full py-3.5 text-base tracking-widest',
-              isJackpot ? 'btn-blacklace shadow-[0_0_24px_rgba(217,70,239,.35)]' : 'btn-blacklace',
-            ].join(' ')}
+            className={['w-full py-3.5 text-base tracking-widest', isJackpot ? 'btn-blacklace shadow-[0_0_24px_rgba(217,70,239,.35)]' : 'btn-blacklace'].join(' ')}
           >
             {t.result.newRound}
           </button>
