@@ -39,9 +39,13 @@ function readPostRollState(): WitnessState {
 
 export function GerardWitness() {
   const [state, setState] = useState<WitnessState>(INITIAL_STATE);
+  const [hiddenByModal, setHiddenByModal] = useState(false);
 
   useEffect(() => {
-    const sync = () => setState(readPostRollState());
+    const sync = () => {
+      setState(readPostRollState());
+      setHiddenByModal(Boolean(document.querySelector('[role="dialog"][aria-modal="true"]')));
+    };
     sync();
 
     const observer = new MutationObserver(sync);
@@ -49,9 +53,11 @@ export function GerardWitness() {
     return () => observer.disconnect();
   }, []);
 
+  if (hiddenByModal) return null;
+
   return (
     <aside
-      className="fixed bottom-4 right-4 z-[70] w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-fuchsia-400/30 bg-black/90 p-3 shadow-2xl backdrop-blur-xl"
+      className="fixed bottom-[calc(5.75rem+env(safe-area-inset-bottom))] right-4 z-[40] w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-fuchsia-400/30 bg-black/90 p-3 shadow-2xl backdrop-blur-xl"
       aria-live="polite"
     >
       <div className="flex items-start gap-3">
