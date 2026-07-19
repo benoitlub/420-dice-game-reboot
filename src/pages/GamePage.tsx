@@ -252,7 +252,7 @@ export function GamePage() {
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-white/75">{postRollChallenge.text}</p>
                 <p className="mt-2 text-[11px] text-white/40">
-                  {challengeStatus === 'connected' ? `Octopus · ${challengeLatency ?? 0} ms` : 'Mode local · Octopus indisponible'}
+                  {challengeStatus === 'connected' ? `Octopus · ${challengeLatency ?? 0} ms` : 'Gérard · mode local autonome'}
                 </p>
               </div>
             )}
