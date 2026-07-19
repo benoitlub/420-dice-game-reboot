@@ -70,7 +70,6 @@ export function GamePage() {
   const [showModal, setShowModal] = useState(false);
   const [postRollChallenge, setPostRollChallenge] = useState<PostRollChallenge | null>(null);
   const [challengeStatus, setChallengeStatus] = useState<PostRollChallengeResponse['status'] | null>(null);
-  const [challengeLatency, setChallengeLatency] = useState<number | null>(null);
   const [challengeLoading, setChallengeLoading] = useState(false);
   const rollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const challengeRequestRef = useRef(0);
@@ -82,7 +81,6 @@ export function GamePage() {
     setChallengeLoading(true);
     setPostRollChallenge(null);
     setChallengeStatus(null);
-    setChallengeLatency(null);
 
     const response = await requestPostRollChallenge({
       packId: state.selectedPack,
@@ -97,7 +95,6 @@ export function GamePage() {
     if (requestId !== challengeRequestRef.current) return;
     setPostRollChallenge(response.challenge);
     setChallengeStatus(response.status);
-    setChallengeLatency(response.latencyMs);
     setChallengeLoading(false);
   }, []);
 
@@ -167,15 +164,11 @@ export function GamePage() {
     setGameState(createInitialState(gameState.selectedPack));
     setPostRollChallenge(null);
     setChallengeStatus(null);
-    setChallengeLatency(null);
     setChallengeLoading(false);
 
     playNewRound();
-    if (Math.random() < 0.60) {
-      setComment(pickRandom(t.game.feuchFlavors));
-    } else {
-      setComment(null);
-    }
+    if (Math.random() < 0.60) setComment(pickRandom(t.game.feuchFlavors));
+    else setComment(null);
   }, [gameState.selectedPack, t.game.feuchFlavors]);
 
   const handleCloseModal = useCallback(() => {
@@ -240,25 +233,6 @@ export function GamePage() {
           />
         </div>
 
-        {gameState.roundOver && (
-          <section className="rounded-2xl border border-fuchsia-400/25 bg-fuchsia-500/10 px-4 py-4">
-            <p className="text-[11px] uppercase tracking-[.18em] text-fuchsia-300">Gérard après le tirage</p>
-            {challengeLoading && <p className="mt-2 text-sm text-white/65">🐙 Gérard transforme le résultat en gage…</p>}
-            {!challengeLoading && postRollChallenge && (
-              <div className="mt-2">
-                <div className="flex items-center justify-between gap-3">
-                  <strong className="text-white">{postRollChallenge.title}</strong>
-                  <span className="text-xs text-white/40">{'⚡'.repeat(postRollChallenge.intensity)}</span>
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-white/75">{postRollChallenge.text}</p>
-                <p className="mt-2 text-[11px] text-white/40">
-                  {challengeStatus === 'connected' ? `Octopus · ${challengeLatency ?? 0} ms` : 'Gérard · mode local autonome'}
-                </p>
-              </div>
-            )}
-          </section>
-        )}
-
         {showPersonaBubble && (
           <PersonaBubble persona={persona} comment={comment} />
         )}
@@ -270,6 +244,9 @@ export function GamePage() {
           dice={gameState.dice}
           persona={persona}
           comment={comment}
+          octopusChallenge={postRollChallenge}
+          octopusStatus={challengeStatus}
+          octopusLoading={challengeLoading}
           onNewRound={handleNewRound}
           onClose={handleCloseModal}
         />
