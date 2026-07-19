@@ -1,0 +1,33 @@
+{
+  "id": "pro-hibited",
+  "title": "Pro.Hibited",
+  "description": "The Pro.Hibited universe — parody, haze and creative chaos",
+  "tone": "Absurd and satirical",
+  "comboRules": [
+    {"faces":["4","2","0"],"title":"420 — The Legendary Haze","text":"Intergalactic jackpot. You are officially appointed Ambassador of the Haze for the evening. Trophy and immunity granted.","intensity":3,"type":"jackpot","characterComment":"THE FOUR-TWENTY! The air suddenly feels unusually dense."},
+    {"faces":["heart","heart","heart"],"title":"Suspicious Triple Heart","text":"Declare your love to your favourite imaginary houseplant. Describe it, name it and accept the applause.","intensity":2,"type":"triple","characterComment":"Three hearts. Apparently herbs have feelings too."},
+    {"faces":["cloud","cloud","cloud"],"title":"Absolute Total Haze","text":"Everyone closes their eyes and describes what they can see inside the fog. No censorship.","intensity":3,"type":"triple","characterComment":"I cannot see anything. It is beautiful. Has anyone seen my keys?"},
+    {"faces":["prohibited","prohibited","prohibited"],"title":"Triple Pro.Hibited","text":"Everyone confesses one thing officially forbidden in their family that they still do cheerfully.","intensity":3,"type":"triple","characterComment":"Three times Pro.Hibited. The evening has entered a new legal dimension."},
+    {"faces":["4","4","4"],"title":"Strategic Four-Four-Four","text":"Present a forty-five-second business plan for optimising aromatic herb production on a city balcony.","intensity":2,"type":"special","characterComment":"The maths is hazy, but the ambition is crystal clear."},
+    {"faces":["2","2","2"],"title":"Triple Two — The Double Rule","text":"For the next two rounds, everything you do must be done twice. Speaking, sipping, laughing. Everything.","intensity":2,"type":"triple","characterComment":"Two times two times two. I repeat: two times two times two."},
+    {"faces":["0","0","0"],"title":"The Great Pro Void","text":"Stay completely silent and motionless for exactly fifteen seconds. Anyone who moves must explain their life plan.","intensity":1,"type":"triple","characterComment":".....................zero noise.....................nothing....................."},
+    {"faces":["heart","cloud","prohibited"],"title":"The Cosmic Trio","text":"Invent a fictional medicinal herb strain, its supposed relaxing properties and its imaginary price per gram.","intensity":3,"type":"special","characterComment":"Love, haze and prohibition. The holy trinity of Pro.Hibited."},
+    {"faces":["4","heart","cloud"],"title":"Four Hazy Hearts","text":"Mime someone who has been looking for their keys in thick fog for twenty minutes. No speaking.","intensity":2,"type":"special","characterComment":"I have seen this before. It was surprisingly artistic."},
+    {"faces":["2","prohibited","0"],"title":"Two-Zero Prohibited","text":"Give a serious lecture on how to manufacture a daisy cigarette. Be technical and unnecessarily precise.","intensity":2,"type":"special","characterComment":"Botanical science serving culinary art. Fascinating."},
+    {"faces":["4","2","heart"],"title":"Romantic Four-Two","text":"Recite a love poem to the nearest plant. If there is no plant, choose a piece of furniture.","intensity":1,"type":"standard"},
+    {"faces":["4","2","cloud"],"title":"Hazy Four-Two","text":"Explain for thirty seconds why clouds are actually the gentrification of the sky.","intensity":2,"type":"standard"},
+    {"faces":["4","2","prohibited"],"title":"Prohibited Four-Two","text":"Found an imaginary pro-haze association. Give it a name, mission, slogan and monthly membership fee.","intensity":2,"type":"standard"},
+    {"faces":["4","0","cloud"],"title":"Four Fog Zero","text":"Speak enthusiastically for forty-five seconds about your imaginary passion for sustainable forest mushrooms.","intensity":2,"type":"standard"},
+    {"faces":["4","0","prohibited"],"title":"Four Zero Prohibited","text":"Create an imaginary government form requesting permission to play saxophone after 10 p.m.","intensity":1,"type":"standard"},
+    {"faces":["2","0","cloud"],"title":"Two Zero Cloud","text":"Name five cloud types in invented Latin and describe their supposed effects on human behaviour.","intensity":2,"type":"standard"},
+    {"faces":["2","0","heart"],"title":"Two Zero Heart","text":"Invent a hazy horoscope for every person at the table.","intensity":1,"type":"standard"},
+    {"faces":["heart","heart","0"],"title":"Double Heart Zero","text":"Explain why the dinosaurs disappeared. The official scientific answer is forbidden.","intensity":2,"type":"standard"},
+    {"faces":["cloud","cloud","4"],"title":"Double Haze Four","text":"Pitch a three-season TV series about a tax inspector who smokes chamomile.","intensity":2,"type":"standard"},
+    {"faces":["prohibited","prohibited","4"],"title":"Double Prohibited Four","text":"Defend a client accused of thinking too much. Deliver a forty-five-second courtroom speech.","intensity":2,"type":"standard"},
+    {"faces":["4","cloud","heart"],"title":"Four Cloud Heart","text":"Invent a cocktail made from imaginary garden herbs and describe its effects with medical seriousness.","intensity":2,"type":"standard"},
+    {"faces":["0","cloud","prohibited"],"title":"Zero Haze Prohibited","text":"Draft a petition demanding that Wednesdays become more blurry. Collect signatures at the table.","intensity":1,"type":"standard"},
+    {"faces":["0","heart","cloud"],"title":"Zero Heart Cloud","text":"Run for Minister of Sustainable Haze and present your political programme in forty-five seconds.","intensity":2,"type":"standard"},
+    {"faces":["4","prohibited","0"],"title":"Four Prohibited Zero","text":"Perform an extremely enthusiastic unboxing of an imaginary box containing absolutely nothing.","intensity":2,"type":"standard"},
+    {"faces":["2","cloud","0"],"title":"Two Cloud Zero","text":"Explain sincerely why pigeons are part of a government surveillance network.","intensity":2,"type":"standard"}
+  ]
+}

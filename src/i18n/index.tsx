@@ -4,11 +4,50 @@ import { es } from './es';
 import { en } from './en';
 
 export type Locale = 'fr' | 'es' | 'en';
-export type Translation = typeof fr;
+
+type BaseTranslation = typeof fr;
+type AboutTranslation = {
+  aboutGame: string;
+  aboutEngine: string;
+  aboutStudio: string;
+};
+
+export type Translation = Omit<BaseTranslation, 'settings'> & {
+  settings: BaseTranslation['settings'] & AboutTranslation;
+};
 
 const LOCALE_KEY = 'bl_locale_v1';
 
-const TRANSLATIONS: Record<Locale, Translation> = { fr, es, en };
+function completeTranslation(
+  translation: BaseTranslation,
+  about: AboutTranslation,
+): Translation {
+  return {
+    ...translation,
+    settings: {
+      ...translation.settings,
+      ...about,
+    },
+  };
+}
+
+const TRANSLATIONS: Record<Locale, Translation> = {
+  fr: completeTranslation(fr, {
+    aboutGame: '420 Dice Game — jeu de dés et de défis pour jouer ensemble.',
+    aboutEngine: 'Moteur de jeu local : aucune connexion n’est nécessaire pour jouer.',
+    aboutStudio: 'Une expérience indépendante créée par Blacklace Studio.',
+  }),
+  es: completeTranslation(es as BaseTranslation, {
+    aboutGame: '420 Dice Game — un juego de dados y retos para compartir.',
+    aboutEngine: 'Motor de juego local: no necesitas conexión para jugar.',
+    aboutStudio: 'Una experiencia independiente creada por Blacklace Studio.',
+  }),
+  en: completeTranslation(en as BaseTranslation, {
+    aboutGame: '420 Dice Game — a dice-and-challenge game made for playing together.',
+    aboutEngine: 'Local game engine: no connection is required to play.',
+    aboutStudio: 'An independent experience created by Blacklace Studio.',
+  }),
+};
 
 function detectLocale(): Locale {
   const saved = localStorage.getItem(LOCALE_KEY) as Locale | null;
@@ -27,7 +66,7 @@ interface I18nContextValue {
 
 const I18nContext = createContext<I18nContextValue>({
   locale: 'fr',
-  t: fr,
+  t: TRANSLATIONS.fr,
   setLocale: () => {},
 });
 

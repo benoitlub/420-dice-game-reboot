@@ -1,0 +1,28 @@
+{
+  "id": "standard",
+  "title": "Standard Mission",
+  "description": "The festive classic for any occasion",
+  "tone": "Funny and festive",
+  "comboRules": [
+    {"faces":["4","2","0"],"title":"420 — Jackpot!","text":"You rolled the legendary 420! You win the round and the table crowns you its champion.","intensity":3,"type":"jackpot","characterComment":"UNBELIEVABLE! The 420! I am officially speechless."},
+    {"faces":["heart","heart","heart"],"title":"Triple Heart","text":"Kiss the person on your left on the forehead. If they refuse, they take the challenge instead.","intensity":2,"type":"triple","characterComment":"Awww. Love is definitely in the air tonight."},
+    {"faces":["cloud","cloud","cloud"],"title":"Total Fog","text":"Everyone blows slowly together and pretends they cannot see anything for ten seconds. Complete silence.","intensity":2,"type":"triple","characterComment":"Zero visibility. I cannot see a thing. Who are you people?"},
+    {"faces":["prohibited","prohibited","prohibited"],"title":"Absolutely Prohibited","text":"Everyone admits one thing they are not supposed to do but still do anyway.","intensity":3,"type":"triple","characterComment":"Triple prohibited. The table judges. The table condemns."},
+    {"faces":["4","4","4"],"title":"Triple Four","text":"Invent an absurd rule that applies for the next three rounds. The group votes on whether it survives.","intensity":2,"type":"special","characterComment":"Three fours. Reality now follows your rule."},
+    {"faces":["2","2","2"],"title":"Double Trouble","text":"Share a truth you did not plan to reveal tonight, or take two sips if you refuse.","intensity":2,"type":"triple","characterComment":"Two times two times two. Speak or pay."},
+    {"faces":["0","0","0"],"title":"The Void","text":"Absolute silence. Nobody speaks, moves or smiles for ten seconds.","intensity":1,"type":"triple","characterComment":"......................................................"},
+    {"faces":["heart","cloud","prohibited"],"title":"Triangle of Awkwardness","text":"Everyone points at the most suspicious person at the table. The person with the most votes takes a challenge.","intensity":2,"type":"special","characterComment":"Love, mystery and prohibition. A perfect triangle of chaos."},
+    {"faces":["4","heart","cloud"],"title":"Smoky Romance","text":"Say the first name of your latest crush. If you refuse, imitate someone at the table for one minute.","intensity":2,"type":"special","characterComment":"Four, heart, cloud. Romance is hovering nearby."},
+    {"faces":["2","prohibited","0"],"title":"Administrative Incident","text":"Recite the rules of the game from memory. If you get more than two details wrong, take a sip.","intensity":1,"type":"special","characterComment":"Two, prohibited, zero. Good luck with the paperwork."},
+    {"faces":["4","2","heart"],"title":"Four-Two Heart","text":"Say something genuinely kind to the person opposite you. No joke. Something real.","intensity":1,"type":"standard","characterComment":"A little sincerity never hurts."},
+    {"faces":["4","0","cloud"],"title":"Four in the Fog","text":"Describe your favourite film without saying its title or genre. The group has to guess.","intensity":1,"type":"standard"},
+    {"faces":["4","prohibited","heart"],"title":"Forbidden Love","text":"Confess a secret attraction, real or fictional. Celebrities and characters both count.","intensity":2,"type":"special"},
+    {"faces":["2","heart","cloud"],"title":"Two Hearts in the Clouds","text":"Give every person at the table one sincere compliment. Keep it quick.","intensity":1,"type":"standard"},
+    {"faces":["0","heart","prohibited"],"title":"Zero Love Prohibited","text":"Tell the story of your worst date. If you have never had one, invent a believable disaster.","intensity":2,"type":"standard"},
+    {"faces":["4","4","2"],"title":"Four-Four-Two","text":"The group chooses someone present for you to imitate.","intensity":2,"type":"standard"},
+    {"faces":["2","2","cloud"],"title":"Double Fog","text":"Speak for thirty seconds about a subject you know nothing about while pretending to be an expert.","intensity":2,"type":"standard"},
+    {"faces":["0","0","heart"],"title":"Romantic Absolute Zero","text":"Write a love haiku in ten seconds. The group scores it out of five.","intensity":1,"type":"standard"},
+    {"faces":["heart","heart","cloud"],"title":"Love in the Fog","text":"Mime a romantic movie scene without speaking. The group has to guess the film.","intensity":1,"type":"standard"},
+    {"faces":["cloud","cloud","prohibited"],"title":"Forbidden Fog","text":"Tell a completely invented rumour about yourself as if it were true. The group may ask three questions.","intensity":2,"type":"standard"}
+  ]
+}
