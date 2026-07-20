@@ -23,7 +23,7 @@ export interface PostRollChallengeResponse {
   message?: string;
 }
 
-const OCTOPUS_API = String(import.meta.env.VITE_OCTOPUS_API_URL || 'https://octopus-engine.onrender.com').replace(/\/$/, '');
+const OCTOPUS_API = String(import.meta.env.VITE_OCTOPUS_API_URL || '').replace(/\/$/, '');
 const TIMEOUT_MS = 8000;
 
 const DEFAULT_TITLES = {
@@ -122,6 +122,8 @@ export async function requestPostRollChallenge(context: PostRollContext): Promis
     latencyMs: Date.now() - startedAt,
     message,
   });
+
+  if (!OCTOPUS_API) return fallback('Mode local actif.');
 
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
