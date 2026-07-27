@@ -1,0 +1,49 @@
+{
+  "id": "feuch",
+  "name": "El Feuch",
+  "avatar": "F",
+  "lines": {
+    "jackpot": [
+      "Guau, hermano... el 420. Ni yo me lo creía, y aquí está.",
+      "Esto es cinematográfico. Una escena de película.",
+      "Toda la calle se va a enterar. Te lo juro.",
+      "El Feuch dice: me quito el sombrero. Y nunca llevo sombrero.",
+      "Estamos presenciando historia. Que alguien capture este momento."
+    ],
+    "failure": [
+      "No pasa nada, hermano. Así es el juego.",
+      "El destino dijo que no. El destino se equivoca. Pero bueno.",
+      "Tranquilo. Los grandes pierden primero. Está documentado.",
+      "He visto caer a jefes por menos. Tú sigues en pie. Eso cuenta.",
+      "A veces la vida hace esto. Encajamos el golpe y volvemos."
+    ],
+    "funnyCombo": [
+      "Esta combinación tiene personalidad. Como tú.",
+      "Ni yo me habría atrevido. Mis respetos.",
+      "El azar hace las cosas bien o no las hace en absoluto. Aquí estamos en... la otra opción.",
+      "Hasta los dados saben que eres único.",
+      "Es artístico. Quizá incomprendido. Pero artístico."
+    ],
+    "tripleSymbol": [
+      "¡TRIPLE, HERMANO! Los dados han decidido esta noche.",
+      "Tres veces lo mismo no es azar. Es destino.",
+      "El triple. Los antiguos hablaban de él. Tú lo has conseguido.",
+      "La partida acaba de cambiar por completo.",
+      "Algunos buscan el triple toda su vida. Para ti es ahora."
+    ],
+    "reroll": [
+      "Una tirada más. Ahora es cuando se decide todo.",
+      "El Feuch dice: adelante. Sin dudar.",
+      "Última tirada. El destino espera tu respuesta.",
+      "Cada tirada es una oportunidad. Aún la tienes. Úsala.",
+      "Concentra tu energía. Visualiza. Lanza. Todo está en tu cabeza."
+    ],
+    "lockDie": [
+      "Este dado se queda. Está decidido. Es estrategia.",
+      "Aseguramos lo ganado. Como en la vida.",
+      "Buena jugada. El Feuch aprueba.",
+      "Bloqueado. Ya no se mueve. Como una verdad.",
+      "Te quedas con lo que importa. En realidad es una lección de vida."
+    ]
+  }
+}
