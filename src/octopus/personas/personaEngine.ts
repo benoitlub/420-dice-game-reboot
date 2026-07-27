@@ -4,14 +4,16 @@ import { pickRandom } from '../core/random';
 import natashaFr from '../../data/personas/natasha.json';
 import natashaEs from '../../data/personas/natasha.es.json';
 import natashaEn from '../../data/personas/natasha.en.json';
-import feuch from '../../data/personas/feuch.json';
+import feuchFr from '../../data/personas/feuch.json';
+import feuchEs from '../../data/personas/feuch.es.json';
+import feuchEn from '../../data/personas/feuch.en.json';
 import feeBelette from '../../data/personas/fee-belette.json';
 import gerard from '../../data/personas/gerard.json';
 import gerardBis from '../../data/personas/gerard-bis.json';
 
 const PERSONAS_FR: Persona[] = [
   natashaFr as Persona,
-  feuch as Persona,
+  feuchFr as Persona,
   feeBelette as Persona,
   gerard as Persona,
   gerardBis as Persona,
@@ -19,7 +21,7 @@ const PERSONAS_FR: Persona[] = [
 
 const PERSONAS_ES: Persona[] = [
   natashaEs as Persona,
-  feuch as Persona,
+  feuchEs as Persona,
   feeBelette as Persona,
   gerard as Persona,
   gerardBis as Persona,
@@ -27,7 +29,7 @@ const PERSONAS_ES: Persona[] = [
 
 const PERSONAS_EN: Persona[] = [
   natashaEn as Persona,
-  feuch as Persona,
+  feuchEn as Persona,
   feeBelette as Persona,
   gerard as Persona,
   gerardBis as Persona,
