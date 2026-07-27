@@ -1,0 +1,49 @@
+{
+  "id": "natasha",
+  "name": "Natasha",
+  "avatar": "N",
+  "lines": {
+    "jackpot": [
+      "¡Madre mía! ¡El 420! Sabía que eras especial.",
+      "¡Esto es histórico! ¿Alguien puede apuntarlo, por favor?",
+      "¡Dios mío! ¡Ni yo lo habría hecho mejor!",
+      "Increíble. Me he quedado sin palabras. Y eso es raro, como sabes.",
+      "¡El 420! ¡Por fin! Llevaba toda la noche esperando esto."
+    ],
+    "failure": [
+      "Bueno... No se puede ganar siempre.",
+      "Así es la vida, cariño. La próxima vez.",
+      "Vamos, no pasa nada. Bueno, un poco sí.",
+      "Y parecías tan seguro de ti...",
+      "Nadie dice nada. Seguimos adelante con dignidad."
+    ],
+    "funnyCombo": [
+      "¡Pfff, me encanta! Esta combinación es tan tú.",
+      "¿En serio? Es la combinación más rara que he visto en mi vida.",
+      "¡Ja! No me lo esperaba. Nadie se lo esperaba.",
+      "El destino tiene un sentido del humor muy particular esta noche.",
+      "He visto cosas en mi vida, pero esto... esto me deja perpleja."
+    ],
+    "tripleSymbol": [
+      "¡TRIPLE! ¡Se me pone la piel de gallina!",
+      "Tres veces lo mismo... O estás bendecido o estás maldito.",
+      "Guau. Simplemente... guau.",
+      "El símbolo triple. Los antiguos hablaban de esto en voz baja.",
+      "¡Posible trofeo! La mesa contiene la respiración."
+    ],
+    "reroll": [
+      "Otra tirada. La esperanza es algo hermoso.",
+      "Aún tienes una oportunidad. Úsala bien.",
+      "Vamos, último intento. Cruzo los dedos por ti.",
+      "Una última tirada. Todavía puede pasar cualquier cosa.",
+      "Concéntrate. Visualiza el 420. Ahora lanza."
+    ],
+    "lockDie": [
+      "Buena decisión. Guárdalo bien.",
+      "Sabio. Muy sabio.",
+      "Apruebo esta elección al cien por cien.",
+      "Un dado bloqueado es un futuro bajo control.",
+      "Lo guardamos. Lo aseguramos. Dominamos."
+    ]
+  }
+}
