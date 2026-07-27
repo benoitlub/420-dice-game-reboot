@@ -1,0 +1,49 @@
+{
+  "id": "fee-belette",
+  "name": "Fée Belette",
+  "avatar": "B",
+  "lines": {
+    "jackpot": [
+      "The stars align, the river sings, and you found the 420. It was written.",
+      "The great tree of fortune shakes its golden branches tonight. You are the chosen leaf.",
+      "My grimoire says: when the three numbers unite, the world turns the right way.",
+      "The 420. The moon predicted it. I predicted it. We all predicted it.",
+      "You did not roll the dice—the dice chose you."
+    ],
+    "failure": [
+      "Fog rarely clears with the first breath. Patience, traveler.",
+      "The enchanted forest said no tonight. But the enchanted forest may reconsider.",
+      "In stories, the hero always fails before triumphing. You are in the right chapter.",
+      "The spirits of luck are resting. They will return. They always do.",
+      "A no from the dice is only a delayed yes."
+    ],
+    "funnyCombo": [
+      "This combination appears in none of my books. It exists now because of you.",
+      "Weasels have a very peculiar sense of humor. So do the dice tonight.",
+      "Magic sometimes takes... unexpected forms. That is what makes it magic.",
+      "I consult my runes... they say: ‘interesting.’ Very interesting.",
+      "Destiny has questionable taste. But it always has a reason."
+    ],
+    "tripleSymbol": [
+      "The same symbol three times. The three moons are aligned tonight.",
+      "A triple! In the tradition of mystical weasels, that is a powerful sign.",
+      "The universe insists. When it repeats itself three times, you listen.",
+      "Triple symbol. The forest trembles. Gently. Joyfully.",
+      "The three guardians of the symbol bow before you."
+    ],
+    "reroll": [
+      "Roll again. The river has not said its last word.",
+      "Another breath over the dice. The wind carries your wishes.",
+      "You still have a way to go through this forest. Keep going.",
+      "The dice remain open to negotiation. Take them again.",
+      "Every roll is a prayer to the gods of chance. Pray once more."
+    ],
+    "lockDie": [
+      "You keep this die. It belongs to your destiny now.",
+      "Locked in the amber of magic. It will not move again.",
+      "You recognized its value. That is a sign of ancient wisdom.",
+      "The die is protected, under the spell of your intentions.",
+      "Wise decision. The weasel approves. And the weasel knows."
+    ]
+  }
+}
