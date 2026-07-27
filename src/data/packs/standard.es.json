@@ -1,0 +1,88 @@
+{
+  "id": "standard",
+  "title": "Misión Estándar",
+  "description": "El clásico festivo para cualquier ocasión",
+  "tone": "Divertido y festivo",
+  "comboRules": [
+    {
+      "faces": ["4", "2", "0"],
+      "title": "420 — ¡Jackpot!",
+      "text": "¡Has conseguido el legendario 420! Trofeo de la ronda. Eres el rey o la reina de esta mesa.",
+      "intensity": 3,
+      "type": "jackpot",
+      "characterComment": "¡INCREÍBLE! ¡El 420! ¡Me he quedado sin palabras!"
+    },
+    {
+      "faces": ["heart", "heart", "heart"],
+      "title": "Triple Corazón",
+      "text": "Besa en la frente a la persona de tu izquierda. Si se niega, le toca cumplir una penitencia.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "¡Awwww! ¡El amor está en el aire esta noche!"
+    },
+    {
+      "faces": ["cloud", "cloud", "cloud"],
+      "title": "Niebla Total",
+      "text": "Soplad todos juntos lentamente y fingid que no veis nada durante 10 segundos. En silencio absoluto.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Visibilidad nula. Ya no veo nada. ¿Quiénes sois?"
+    },
+    {
+      "faces": ["prohibited", "prohibited", "prohibited"],
+      "title": "Prohibited Absoluto",
+      "text": "Cada persona confiesa en voz alta algo que se supone que no debe hacer, pero que hace igualmente.",
+      "intensity": 3,
+      "type": "triple",
+      "characterComment": "Triple prohibido. La mesa juzga. La mesa condena."
+    },
+    {
+      "faces": ["4", "4", "4"],
+      "title": "Trío de Cuatros",
+      "text": "Inventa una regla absurda que se aplique durante las 3 próximas rondas. El grupo vota si se mantiene.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Tres veces cuatro... ¡La regla se dobla a tu voluntad!"
+    },
+    {
+      "faces": ["2", "2", "2"],
+      "title": "Doble Duplicado",
+      "text": "Di una verdad que no pensabas contar esta noche. O bebe dos tragos si te niegas.",
+      "intensity": 2,
+      "type": "triple",
+      "characterComment": "Dos por dos por dos... ¡Habla o paga!"
+    },
+    {
+      "faces": ["0", "0", "0"],
+      "title": "La Nada",
+      "text": "Silencio absoluto. Nadie habla, se mueve ni sonríe durante 10 segundos. Trofeo del vacío.",
+      "intensity": 1,
+      "type": "triple",
+      "characterComment": "......................................................"
+    },
+    {
+      "faces": ["heart", "cloud", "prohibited"],
+      "title": "Triángulo de la Incomodidad",
+      "text": "Todos señalan a la persona más sospechosa de la mesa. Quien reciba más dedos cumple una penitencia.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Amor, misterio y prohibición. El triángulo perfecto del caos."
+    },
+    {
+      "faces": ["4", "heart", "cloud"],
+      "title": "Romance entre Nubes",
+      "text": "Di el nombre de tu último crush. Si te niegas, imita a alguien de la mesa durante 1 minuto.",
+      "intensity": 2,
+      "type": "special",
+      "characterComment": "Cuatro, corazón, nube... El amor flota esta noche."
+    },
+    {
+      "faces": ["2", "prohibited", "0"],
+      "title": "Incidente Administrativo",
+      "text": "Recita las reglas del juego de memoria. Si te equivocas en más de dos puntos, bebes.",
+      "intensity": 1,
+      "type": "special",
+      "characterComment": "Dos, prohibido, cero... Buena suerte con eso."
+    }
+  ]
+}
