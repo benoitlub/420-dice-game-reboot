@@ -2,6 +2,7 @@ import type { Pack } from '../../types/packs';
 import type { Locale } from '../../i18n';
 import standardPackFr from '../../data/packs/standard.json';
 import standardPackEs from '../../data/packs/standard.es.json';
+import standardPackEn from '../../data/packs/standard.en.json';
 import proHibitedPack from '../../data/packs/pro-hibited.json';
 import christmasPack from '../../data/packs/christmas.json';
 import celibatairesPack from '../../data/packs/celibataires.json';
@@ -22,8 +23,14 @@ const PACKS_ES: Record<string, Pack> = {
   standard: standardPackEs as Pack,
 };
 
+const PACKS_EN: Record<string, Pack> = {
+  ...PACKS_FR,
+  standard: standardPackEn as Pack,
+};
+
 function packsFor(locale: Locale = 'fr'): Record<string, Pack> {
   if (locale === 'es') return PACKS_ES;
+  if (locale === 'en') return PACKS_EN;
   return PACKS_FR;
 }
 
