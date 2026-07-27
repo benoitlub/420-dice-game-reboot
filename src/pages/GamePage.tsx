@@ -28,13 +28,13 @@ import {
   playNewRound,
 } from '../octopus/audio/soundEngine';
 import { pickRandom } from '../octopus';
-import { useT } from '../i18n';
+import { useT, type Locale } from '../i18n';
 
 const ROLL_ANIMATION_MS = 700;
 
-function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPersona>) {
-  const pack = loadPack(rolled.selectedPack);
-  const result = resolveCombo(rolled.dice, pack);
+function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPersona>, locale: Locale) {
+  const pack = loadPack(rolled.selectedPack, locale);
+  const result = resolveCombo(rolled.dice, pack, locale);
 
   const stats = loadStats();
   const isVictory = result.type === 'jackpot';
@@ -62,7 +62,7 @@ function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPe
 
 export function GamePage() {
   const { t, locale } = useT();
-  const packs = getAvailablePacks();
+  const packs = getAvailablePacks(locale);
   const [gameState, setGameState] = useState<GameState>(() => createInitialState('standard'));
   const [isRolling, setIsRolling] = useState(false);
   const [persona] = useState<Persona>(() => pickRandomPersona());
@@ -123,7 +123,7 @@ export function GamePage() {
         const isLastRoll = rolled.rollCount >= rolled.maxRolls;
 
         if (won || isLastRoll) {
-          const { result, narratorComment } = resolveRound(rolled, persona);
+          const { result, narratorComment } = resolveRound(rolled, persona, locale);
           const roundPhase = won ? 'VICTORY' : 'DEFEAT';
 
           const finalState: GameState = {
@@ -143,7 +143,7 @@ export function GamePage() {
         return rolled;
       });
     }, ROLL_ANIMATION_MS);
-  }, [isRolling, gameState, persona, generateChallengeForRound]);
+  }, [isRolling, gameState, persona, locale, generateChallengeForRound]);
 
   const handleLockDie = useCallback(
     (id: number) => {
