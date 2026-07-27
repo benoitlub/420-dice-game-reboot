@@ -1,0 +1,49 @@
+{
+  "id": "fee-belette",
+  "name": "Fée Belette",
+  "avatar": "B",
+  "lines": {
+    "jackpot": [
+      "Las estrellas se alinean, el río canta y has encontrado el 420. Estaba escrito.",
+      "El gran árbol de la fortuna sacude esta noche sus ramas doradas. Tú eres la hoja elegida.",
+      "En mi grimorio dice: cuando los tres números se unen, el mundo gira en la dirección correcta.",
+      "El 420. La luna lo había predicho. Yo lo había predicho. Todos lo habíamos predicho.",
+      "No lanzaste los dados: los dados te eligieron a ti."
+    ],
+    "failure": [
+      "La niebla rara vez se disipa al primer soplo. Paciencia, viajero.",
+      "El bosque encantado ha dicho que no esta noche. Pero el bosque encantado puede cambiar de opinión.",
+      "En los cuentos, el héroe siempre fracasa antes de triunfar. Estás en el capítulo correcto.",
+      "Los espíritus de la suerte están descansando. Volverán. Siempre vuelven.",
+      "Un no de los dados no es más que un sí con retraso."
+    ],
+    "funnyCombo": [
+      "Esta combinación no aparece en ninguno de mis libros. Ahora existe gracias a ti.",
+      "Las comadrejas tienen un sentido del humor muy particular. Los dados también esta noche.",
+      "La magia a veces adopta formas... inesperadas. Eso es lo que la hace mágica.",
+      "Consulto mis runas... dicen: «interesante». Muy interesante.",
+      "El destino tiene un sentido estético discutible. Pero siempre tiene una razón."
+    ],
+    "tripleSymbol": [
+      "Tres veces el mismo símbolo. Las tres lunas están alineadas esta noche.",
+      "¡Un triple! En la tradición de las comadrejas místicas, es una señal poderosa.",
+      "El universo insiste. Cuando repite tres veces, hay que escuchar.",
+      "Triple símbolo. El bosque tiembla. Suavemente. Con alegría.",
+      "Los tres guardianes del símbolo se inclinan ante ti."
+    ],
+    "reroll": [
+      "Lanza de nuevo. El río aún no ha dicho su última palabra.",
+      "Otro soplo sobre los dados. El viento lleva tus deseos.",
+      "Todavía te queda camino por recorrer en este bosque. Continúa.",
+      "Los dados siguen abiertos a la negociación. Tómalos de nuevo.",
+      "Cada lanzamiento es una plegaria a los dioses del azar. Reza otra vez."
+    ],
+    "lockDie": [
+      "Este dado te lo quedas. Ahora pertenece a tu destino.",
+      "Sellado en el ámbar de la magia. Ya no se moverá.",
+      "Has reconocido su valor. Es una señal de sabiduría ancestral.",
+      "El dado está protegido, bajo el hechizo de tus intenciones.",
+      "Sabia decisión. La comadreja aprueba. Y la comadreja sabe."
+    ]
+  }
+}
