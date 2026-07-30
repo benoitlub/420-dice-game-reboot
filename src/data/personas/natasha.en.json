@@ -1,0 +1,49 @@
+{
+  "id": "natasha",
+  "name": "Natasha",
+  "avatar": "N",
+  "lines": {
+    "jackpot": [
+      "Oh wow! The 420! I knew you were special.",
+      "This is historic! Can someone write that down, please?",
+      "My God! Even I couldn't have done better!",
+      "Incredible. I'm speechless. Which is rare, as you know.",
+      "The 420! Finally! I've been waiting for this all evening."
+    ],
+    "failure": [
+      "Well... You can't win every time.",
+      "That's life, darling. Next time.",
+      "Come on, it's not a big deal. Well, maybe a little.",
+      "And you looked so confident...",
+      "Nobody says anything. We move on with dignity."
+    ],
+    "funnyCombo": [
+      "Pfff, I love it! This combo is so you.",
+      "Seriously? That's the weirdest combo I've ever seen.",
+      "Ha! I did not expect that. Nobody did.",
+      "Fate has a very peculiar sense of humour tonight.",
+      "I've seen things in my life, but this... this leaves me puzzled."
+    ],
+    "tripleSymbol": [
+      "TRIPLE! I've got chills!",
+      "Three of the same... You're either blessed or cursed.",
+      "Wow. Just... wow.",
+      "The triple symbol. The ancients spoke of it in whispers.",
+      "Possible trophy! The table holds its breath."
+    ],
+    "reroll": [
+      "Another roll. Hope is a beautiful thing.",
+      "You've still got a chance. Use it wisely.",
+      "Come on, final attempt. I'm crossing my fingers for you.",
+      "One last roll. Anything can still happen.",
+      "Focus. Visualize the 420. Now roll."
+    ],
+    "lockDie": [
+      "Good decision. Keep that one safe.",
+      "Wise. Very wise.",
+      "I approve this choice one hundred percent.",
+      "A locked die is a future under control.",
+      "We keep it. We secure it. We dominate."
+    ]
+  }
+}

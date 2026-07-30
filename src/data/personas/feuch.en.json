@@ -1,0 +1,49 @@
+{
+  "id": "feuch",
+  "name": "The Feuch",
+  "avatar": "F",
+  "lines": {
+    "jackpot": [
+      "Whoa, brother... the 420. I didn't even believe it, and yet here we are.",
+      "This is cinematic. A full movie scene.",
+      "The whole street is going to hear about this. I swear.",
+      "The Feuch says: hats off. And I never wear a hat.",
+      "We're witnessing history. Someone capture this moment."
+    ],
+    "failure": [
+      "It's all good, brother. That's the game.",
+      "Fate said no. Fate is wrong. But still.",
+      "Don't worry. The great ones lose first. It's documented.",
+      "I've seen bosses fall for less. You're still standing. That counts.",
+      "Sometimes life does this. We take the hit and come back."
+    ],
+    "funnyCombo": [
+      "This combo has personality. Like you.",
+      "I wouldn't have dared myself. Respect.",
+      "Chance either gets things right or completely wrong. This is... the other option.",
+      "Even the dice know you're unique.",
+      "It's artistic. Maybe misunderstood. But artistic."
+    ],
+    "tripleSymbol": [
+      "TRIPLE, BROTHER! The dice have decided tonight.",
+      "Three of the same isn't chance. It's destiny.",
+      "The triple. The elders spoke of it. You did it.",
+      "The whole game just changed.",
+      "Some people chase the triple their whole lives. Yours is now."
+    ],
+    "reroll": [
+      "One more roll. This is where it all happens.",
+      "The Feuch says: go for it. No hesitation.",
+      "Last roll. Fate is waiting for your answer.",
+      "Every roll is a chance. You still have it. Use it.",
+      "Focus your energy. Visualize. Roll. It's all in your head."
+    ],
+    "lockDie": [
+      "This die stays. Decision made. Strategy.",
+      "We secure what we've gained. Just like in life.",
+      "Smart move. The Feuch approves.",
+      "Locked. It can't move now. Like a truth.",
+      "You keep what matters. That's actually a life lesson."
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { DiceBoard } from '../components/DiceBoard';
 import { RollControls } from '../components/RollControls';
 import { PackSelector } from '../components/PackSelector';
@@ -28,13 +28,13 @@ import {
   playNewRound,
 } from '../octopus/audio/soundEngine';
 import { pickRandom } from '../octopus';
-import { useT } from '../i18n';
+import { useT, type Locale } from '../i18n';
 
 const ROLL_ANIMATION_MS = 700;
 
-function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPersona>) {
-  const pack = loadPack(rolled.selectedPack);
-  const result = resolveCombo(rolled.dice, pack);
+function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPersona>, locale: Locale) {
+  const pack = loadPack(rolled.selectedPack, locale);
+  const result = resolveCombo(rolled.dice, pack, locale);
 
   const stats = loadStats();
   const isVictory = result.type === 'jackpot';
@@ -62,10 +62,10 @@ function resolveRound(rolled: GameState, persona: ReturnType<typeof pickRandomPe
 
 export function GamePage() {
   const { t, locale } = useT();
-  const packs = getAvailablePacks();
+  const packs = getAvailablePacks(locale);
   const [gameState, setGameState] = useState<GameState>(() => createInitialState('standard'));
   const [isRolling, setIsRolling] = useState(false);
-  const [persona] = useState<Persona>(() => pickRandomPersona());
+  const [persona, setPersona] = useState<Persona>(() => pickRandomPersona(locale));
   const [comment, setComment] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [postRollChallenge, setPostRollChallenge] = useState<PostRollChallenge | null>(null);
@@ -73,6 +73,14 @@ export function GamePage() {
   const [challengeLoading, setChallengeLoading] = useState(false);
   const rollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const challengeRequestRef = useRef(0);
+
+  useEffect(() => {
+    setPersona(previous => {
+      const localized = pickRandomPersona(locale);
+      return localized.id === previous.id ? localized : previous;
+    });
+    setComment(null);
+  }, [locale]);
 
   const generateChallengeForRound = useCallback(async (state: GameState) => {
     if (!state.currentResult) return;
@@ -123,7 +131,7 @@ export function GamePage() {
         const isLastRoll = rolled.rollCount >= rolled.maxRolls;
 
         if (won || isLastRoll) {
-          const { result, narratorComment } = resolveRound(rolled, persona);
+          const { result, narratorComment } = resolveRound(rolled, persona, locale);
           const roundPhase = won ? 'VICTORY' : 'DEFEAT';
 
           const finalState: GameState = {
@@ -143,7 +151,7 @@ export function GamePage() {
         return rolled;
       });
     }, ROLL_ANIMATION_MS);
-  }, [isRolling, gameState, persona, generateChallengeForRound]);
+  }, [isRolling, gameState, persona, locale, generateChallengeForRound]);
 
   const handleLockDie = useCallback(
     (id: number) => {
