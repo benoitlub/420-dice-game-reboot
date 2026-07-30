@@ -30,7 +30,7 @@ Le workflow `.github/workflows/deploy.yml` se déclenche sur chaque push sur `ma
 - 🎲 420 Dice Game — Octopus Engine
 - 🏆 Trophées & statistiques
 - 💬 Bulles Feuch Institute (14 saveurs × 3 langues)
-- ✨ Premium — PayPal `benoitlubert@gmail.com`
+- ✨ Premium — PayPal
 - 🔊 Sons + haptique · 📱 Mobile-first
 
 ## localStorage
