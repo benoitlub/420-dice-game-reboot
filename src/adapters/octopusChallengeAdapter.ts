@@ -25,7 +25,7 @@ export interface ChallengeResponse {
   message?: string;
 }
 
-const OCTOPUS_API = String(import.meta.env.VITE_OCTOPUS_API_URL || 'https://octopus-engine.onrender.com').replace(/\/$/, '');
+const OCTOPUS_API = String(import.meta.env.VITE_OCTOPUS_API_URL || 'https://69d57f92-9175-4376-9486-b14b302eaa7e-00-ov0lvwjhok0a-bn57596p.janeway.replit.dev/api').replace(/\/$/, '');
 const TIMEOUT_MS = 8000;
 
 const localChallenges: Record<Mood, string[]> = {
