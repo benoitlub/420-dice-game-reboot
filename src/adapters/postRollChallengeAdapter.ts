@@ -91,24 +91,38 @@ function localChallenge(context: PostRollContext): PostRollChallenge {
   };
 }
 
+// Octopus renvoie toujours le texte brut de Mistral dans output.text — jamais
+// un objet déjà structuré. Le prompt lui demande du JSON, mais Mistral
+// l'entoure parfois de balises ```json — on gère les deux cas ici.
 function normalizeChallenge(payload: unknown, language: PostRollContext['language'] = 'fr'): PostRollChallenge | null {
   const source = payload && typeof payload === 'object' ? payload as Record<string, unknown> : {};
   const output = source.output && typeof source.output === 'object' ? source.output as Record<string, unknown> : {};
-  const raw = (source.challenge && typeof source.challenge === 'object' ? source.challenge : null)
-    || (output.challenge && typeof output.challenge === 'object' ? output.challenge : null)
-    || (Array.isArray(source.suggestions) ? source.suggestions[0] : null)
-    || (Array.isArray(output.suggestions) ? output.suggestions[0] : null);
+  const text = typeof output.text === 'string' ? output.text : '';
+
+  let parsed: Record<string, unknown> = {};
+  if (text.trim()) {
+    const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+    try {
+      const value = JSON.parse(cleaned);
+      if (value && typeof value === 'object') parsed = value as Record<string, unknown>;
+    } catch {
+      // Mistral n'a pas renvoyé de JSON exploitable cette fois — secours local.
+    }
+  }
+
+  const raw = (parsed.challenge && typeof parsed.challenge === 'object' ? parsed.challenge : null)
+    || (Array.isArray(parsed.suggestions) ? parsed.suggestions[0] : null);
 
   if (!raw || typeof raw !== 'object') return null;
   const record = raw as Record<string, unknown>;
-  const text = String(record.text || record.challenge || '').trim();
-  if (!text) return null;
+  const challengeText = String(record.text || record.challenge || '').trim();
+  if (!challengeText) return null;
 
   const rawIntensity = Number(record.intensity || 2);
   return {
     id: String(record.id || `octopus-${Date.now()}`),
     title: String(record.title || DEFAULT_TITLES[language || 'fr']),
-    text,
+    text: challengeText,
     intensity: rawIntensity >= 3 ? 3 : rawIntensity <= 1 ? 1 : 2,
     source: 'octopus',
   };

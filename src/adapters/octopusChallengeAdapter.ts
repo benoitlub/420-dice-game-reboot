@@ -67,14 +67,26 @@ function fallback(context: ChallengeContext, startedAt: number, message?: string
   };
 }
 
-function normalizeSuggestions(payload: unknown): ChallengeSuggestion[] {
+// Octopus renvoie toujours le texte brut de Mistral dans output.text — jamais
+// un objet déjà structuré. Le prompt lui demande du JSON, mais Mistral
+// l'entoure parfois de balises ```json — on gère les deux cas ici.
+function parseMistralJson(payload: unknown): Record<string, unknown> {
   const source = payload && typeof payload === 'object' ? payload as Record<string, unknown> : {};
   const output = source.output && typeof source.output === 'object' ? source.output as Record<string, unknown> : {};
-  const raw = Array.isArray(source.suggestions)
-    ? source.suggestions
-    : Array.isArray(output.suggestions)
-      ? output.suggestions
-      : [];
+  const text = typeof output.text === 'string' ? output.text : '';
+  if (!text.trim()) return {};
+  const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+  try {
+    const parsed = JSON.parse(cleaned);
+    return parsed && typeof parsed === 'object' ? parsed as Record<string, unknown> : {};
+  } catch {
+    return {};
+  }
+}
+
+function normalizeSuggestions(payload: unknown): ChallengeSuggestion[] {
+  const parsed = parseMistralJson(payload);
+  const raw = Array.isArray(parsed.suggestions) ? parsed.suggestions : [];
 
   return raw.slice(0, 3).map((item, index) => {
     const record = item && typeof item === 'object' ? item as Record<string, unknown> : {};
