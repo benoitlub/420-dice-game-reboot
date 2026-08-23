@@ -23,7 +23,7 @@ export interface PostRollChallengeResponse {
   message?: string;
 }
 
-const OCTOPUS_API = String(import.meta.env.VITE_OCTOPUS_API_URL || '').replace(/\/$/, '');
+const OCTOPUS_API = String(import.meta.env.VITE_OCTOPUS_API_URL || 'https://octopus-engine-app.benoitlubert.workers.dev').replace(/\/$/, '');
 const TIMEOUT_MS = 8000;
 
 const DEFAULT_TITLES = {
