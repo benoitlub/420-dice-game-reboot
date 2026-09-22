@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { DiceBoard } from '../components/DiceBoard';
-import { OpeningChallengeAssistant } from '../components/OpeningChallengeAssistant';
 import { RollControls } from '../components/RollControls';
 import { PackSelector } from '../components/PackSelector';
 import { ResultModal } from '../components/ResultModal';
@@ -210,7 +209,6 @@ export function GamePage() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <OpeningChallengeAssistant onSelect={challenge => setComment(challenge.text)} />
         <PackSelector
           packs={packs}
           selectedPackId={gameState.selectedPack}
