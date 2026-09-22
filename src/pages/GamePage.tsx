@@ -71,6 +71,7 @@ export function GamePage() {
   const [postRollChallenge, setPostRollChallenge] = useState<PostRollChallenge | null>(null);
   const [challengeStatus, setChallengeStatus] = useState<PostRollChallengeResponse['status'] | null>(null);
   const [challengeLoading, setChallengeLoading] = useState(false);
+  const [challengeMessage, setChallengeMessage] = useState<string | null>(null);
   const rollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const challengeRequestRef = useRef(0);
 
@@ -89,6 +90,7 @@ export function GamePage() {
     setChallengeLoading(true);
     setPostRollChallenge(null);
     setChallengeStatus(null);
+    setChallengeMessage(null);
 
     const response = await requestPostRollChallenge({
       packId: state.selectedPack,
@@ -103,6 +105,7 @@ export function GamePage() {
     if (requestId !== challengeRequestRef.current) return;
     setPostRollChallenge(response.challenge);
     setChallengeStatus(response.status);
+    setChallengeMessage(response.message ?? null);
     setChallengeLoading(false);
   }, [locale]);
 
@@ -172,6 +175,7 @@ export function GamePage() {
     setGameState(createInitialState(gameState.selectedPack));
     setPostRollChallenge(null);
     setChallengeStatus(null);
+    setChallengeMessage(null);
     setChallengeLoading(false);
 
     playNewRound();
@@ -255,6 +259,7 @@ export function GamePage() {
           octopusChallenge={postRollChallenge}
           octopusStatus={challengeStatus}
           octopusLoading={challengeLoading}
+          octopusMessage={challengeMessage}
           onNewRound={handleNewRound}
           onClose={handleCloseModal}
         />
