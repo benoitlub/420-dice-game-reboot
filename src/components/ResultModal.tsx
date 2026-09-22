@@ -15,6 +15,7 @@ interface ResultModalProps {
   octopusChallenge?: PostRollChallenge | null;
   octopusStatus?: PostRollChallengeResponse['status'] | null;
   octopusLoading?: boolean;
+  octopusMessage?: string | null;
   onNewRound: () => void;
   onClose: () => void;
 }
@@ -62,6 +63,7 @@ export function ResultModal({
   octopusChallenge,
   octopusStatus,
   octopusLoading = false,
+  octopusMessage,
   onNewRound,
   onClose,
 }: ResultModalProps) {
@@ -217,6 +219,9 @@ export function ResultModal({
 
           {octopusLoading && (
             <p className="text-[11px] text-fuchsia-200/60">🐙 Gérard cherche une variante adaptée au tirage…</p>
+          )}
+          {octopusStatus === 'fallback' && (
+            <p role="status" className="text-[11px] text-amber-300/80">Mode local · {octopusMessage || 'Octopus n’a pas fourni de gage exploitable.'}</p>
           )}
           {hasOctopusChallenge && (
             <p className="text-[11px] uppercase tracking-[.16em] text-fuchsia-300/55">Gage adapté par Octopus</p>
