@@ -183,7 +183,9 @@ export async function requestPostRollChallenge(context: PostRollContext): Promis
     });
 
     if (!response.ok) return fallback(`Octopus HTTP ${response.status}`);
-    const challenge = normalizeChallenge(await response.json(), context.language);
+    const payload = await response.json() as { status?: string; summary?: string; resourceResult?: { message?: string } };
+    if (payload.status !== 'completed') return fallback([payload.summary, payload.resourceResult?.message].filter(Boolean).join(' · ') || `Mission Octopus : ${payload.status || 'statut inconnu'}`);
+    const challenge = normalizeChallenge(payload, context.language);
     if (!challenge) return fallback('Octopus a répondu sans gage exploitable.');
 
     return {
