@@ -155,6 +155,7 @@ export function PremiumPage() {
         )}
       </div>
 
+      <div className="text-center space-y-1 pb-2"><a href="https://ko-fi.com/feuchinstitut" target="_blank" rel="noopener noreferrer" className="inline-block rounded-xl border border-white/15 px-4 py-3 text-sm text-fuchsia-200 hover:border-fuchsia-400/50">☕ Soutenir le Feuch Institut sur Ko-fi ↗</a><p className="text-xs text-white/40">Don libre, distinct de l’achat du Blacklace Pass. Aucun accès Premium n’est débloqué par ce don.</p></div>
       <p className="text-center text-[10px] text-white/20 pb-4">
         420 Dice Game · {PREMIUM_CONFIG.premiumVersion} · Blacklace Studio
       </p>
