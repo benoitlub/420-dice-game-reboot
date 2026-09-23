@@ -9,7 +9,7 @@ export const PREMIUM_CONFIG = {
   priceLabel: '4,20 €',
 
   /** URL PayPal produit / achat. Laisser vide tant que le lien PayPal marchand n'est pas prêt. */
-  paymentUrl: '',
+  paymentUrl: '', // Shared pass checkout stays disabled until verified fulfillment is deployed.
 
   /** Version du système Premium — incrémentée lors d'un changement de droits. */
   premiumVersion: '1.0.0',
