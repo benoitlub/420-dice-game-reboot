@@ -147,7 +147,13 @@ export function GamePage() {
 
           setComment(narratorComment);
           setTimeout(() => setShowModal(true), 80);
-          void generateChallengeForRound(finalState);
+
+          // Un 420 est une victoire : aucun gage pour le gagnant.
+          // Les gages Octopus/Gérard ne sont générés qu'en cas de défaite.
+          if (!won) {
+            void generateChallengeForRound(finalState);
+          }
+
           return finalState;
         }
 
