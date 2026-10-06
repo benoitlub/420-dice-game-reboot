@@ -30,24 +30,24 @@ const TIMEOUT_MS = 8000;
 
 const localChallenges: Record<Mood, string[]> = {
   gentle: [
-    "Fais un compliment précis à la personne de ton choix.",
-    "Raconte en trente secondes ton meilleur souvenir avec le groupe.",
-    "Imite une célébrité jusqu'à ce que quelqu'un la reconnaisse.",
+    "Fais un compliment précis à quelqu'un.",
+    "Imite une célébrité pendant dix secondes.",
+    "Fais sourire un joueur sans le toucher.",
   ],
   funny: [
-    "Fais une publicité de vingt secondes pour l'objet le plus inutile de la pièce.",
-    "Raconte ta journée comme un documentaire animalier.",
-    "Rejoue ton arrivée comme si tu entrais dans un film d'action.",
+    "Imite un animal pendant dix secondes.",
+    "Parle avec un accent jusqu'au prochain lancer.",
+    "Fais une grimace jusqu'à ce que quelqu'un rie.",
   ],
   spicy: [
-    "Laisse le groupe choisir une question indiscrète à laquelle tu réponds honnêtement.",
-    "Envoie un compliment audacieux à la personne choisie par le groupe.",
-    "Fais une déclaration dramatique à l'objet le plus proche.",
+    "Réponds franchement à une question du groupe.",
+    "Fais un compliment audacieux à quelqu'un.",
+    "Chuchote ton meilleur faux secret à ton voisin.",
   ],
   chaos: [
-    "Pendant une minute, chaque phrase doit commencer par : Selon le protocole…",
-    "Échange ton prénom avec un autre joueur jusqu'au prochain lancer.",
-    "Le groupe choisit un mot interdit : si tu le prononces, tu rejoues immédiatement.",
+    "Interdiction de dire « oui » jusqu'au prochain lancer.",
+    "Échange ton prénom avec un joueur jusqu'au prochain lancer.",
+    "Parle uniquement en questions jusqu'au prochain lancer.",
   ],
 };
 
@@ -84,6 +84,15 @@ function parseMistralJson(payload: unknown): Record<string, unknown> {
   }
 }
 
+function isSimpleChallenge(text: string): boolean {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  const words = clean.split(' ').filter(Boolean);
+  if (!clean || words.length > 18 || clean.includes('\n')) return false;
+  if (/\b(puis|ensuite|après avoir|avant de|et puis|et ensuite)\b/i.test(clean)) return false;
+  const sentenceMarks = clean.match(/[.!?]+/g) || [];
+  return sentenceMarks.length <= 1;
+}
+
 function normalizeSuggestions(payload: unknown): ChallengeSuggestion[] {
   const parsed = parseMistralJson(payload);
   const raw = Array.isArray(parsed.suggestions) ? parsed.suggestions : [];
@@ -97,7 +106,7 @@ function normalizeSuggestions(payload: unknown): ChallengeSuggestion[] {
       intensity: Number(record.intensity || 2) >= 3 ? 3 : Number(record.intensity || 2) <= 1 ? 1 : 2,
       source: 'octopus' as const,
     };
-  }).filter(item => item.text.trim().length > 0);
+  }).filter(item => isSimpleChallenge(item.text));
 }
 
 export async function requestOpeningChallenges(context: ChallengeContext): Promise<ChallengeResponse> {
@@ -113,7 +122,7 @@ export async function requestOpeningChallenges(context: ChallengeContext): Promi
       body: JSON.stringify({
         operationId: `420dice_opening_${Date.now()}`,
         title: '420 Dice · gages de démarrage',
-        objective: 'Proposer trois gages courts, immédiatement jouables et adaptés au groupe.',
+        objective: 'Proposer trois gages ultra-courts, instantanés et adaptés au groupe.',
         context: {
           id: '420-dice-game',
           label: '420 Dice Game',
@@ -133,7 +142,12 @@ export async function requestOpeningChallenges(context: ChallengeContext): Promi
         authorizedResources: [],
         prompt: [
           'Retourne exactement trois suggestions de gages.',
-          'Chaque gage doit être faisable en moins de deux minutes.',
+          'RÈGLE PRIORITAIRE : un gage doit se comprendre au premier coup d’œil.',
+          'Chaque texte contient une seule phrase, idéalement 6 à 15 mots, maximum 18 mots.',
+          'Une seule action OU une seule règle simple. Jamais plusieurs étapes.',
+          'Exécution immédiate : moins de 30 secondes, sauf une règle valable jusqu’au prochain lancer.',
+          'N’utilise pas « puis », « ensuite », « après avoir » ou de scénario à expliquer.',
+          'Le titre contient 2 à 4 mots.',
           'Évite humiliation, danger, harcèlement, contenu illégal et publication publique.',
           `Groupe: ${context.group}`,
           `Ambiance: ${context.mood}`,
