@@ -38,27 +38,27 @@ function localChallenge(context: PostRollContext): PostRollChallenge {
   const copy = {
     fr: {
       winTitle: 'Gage du 420',
-      winText: `Le groupe choisit un joueur : il doit célébrer le tirage ${joined} comme une victoire olympique pendant trente secondes.`,
+      winText: `Célèbre ${joined} comme un champion pendant dix secondes.`,
       tripleTitle: 'Triple conséquence',
-      tripleText: 'Choisis un autre joueur et improvisez ensemble une publicité absurde pour le dernier objet touché.',
+      tripleText: 'Imite un animal choisi par le groupe pendant dix secondes.',
       rollTitle: 'Gage du tirage',
-      rollText: `Résultat « ${context.resultTitle} » : raconte une anecdote vraie en trente secondes, mais le groupe choisit le ton.`,
+      rollText: `Imite l’émotion de « ${context.resultTitle} » pendant dix secondes.`,
     },
     en: {
       winTitle: '420 challenge',
-      winText: `The group chooses one player: they must celebrate the ${joined} roll like an Olympic victory for thirty seconds.`,
+      winText: `Celebrate ${joined} like a champion for ten seconds.`,
       tripleTitle: 'Triple consequence',
-      tripleText: 'Choose another player and improvise an absurd advertisement together for the last object touched.',
+      tripleText: 'Imitate an animal chosen by the group for ten seconds.',
       rollTitle: 'Roll challenge',
-      rollText: `Result “${context.resultTitle}”: tell a true anecdote in thirty seconds, but the group chooses the tone.`,
+      rollText: `Act out the emotion of “${context.resultTitle}” for ten seconds.`,
     },
     es: {
       winTitle: 'Reto del 420',
-      winText: `El grupo elige a un jugador: debe celebrar la tirada ${joined} como una victoria olímpica durante treinta segundos.`,
+      winText: `Celebra ${joined} como un campeón durante diez segundos.`,
       tripleTitle: 'Triple consecuencia',
-      tripleText: 'Elige a otro jugador e improvisad juntos un anuncio absurdo para el último objeto que habéis tocado.',
+      tripleText: 'Imita un animal elegido por el grupo durante diez segundos.',
       rollTitle: 'Reto de la tirada',
-      rollText: `Resultado «${context.resultTitle}»: cuenta una anécdota real en treinta segundos, pero el grupo elige el tono.`,
+      rollText: `Imita la emoción de «${context.resultTitle}» durante diez segundos.`,
     },
   }[language];
 
@@ -91,6 +91,15 @@ function localChallenge(context: PostRollContext): PostRollChallenge {
   };
 }
 
+function isSimpleChallenge(text: string): boolean {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  const words = clean.split(' ').filter(Boolean);
+  if (!clean || words.length > 18 || clean.includes('\n')) return false;
+  if (/\b(puis|ensuite|après avoir|avant de|et puis|et ensuite|then|after that|después|luego)\b/i.test(clean)) return false;
+  const sentenceMarks = clean.match(/[.!?]+/g) || [];
+  return sentenceMarks.length <= 1;
+}
+
 // Octopus renvoie toujours le texte brut de Mistral dans output.text — jamais
 // un objet déjà structuré. Le prompt lui demande du JSON, mais Mistral
 // l'entoure parfois de balises ```json — on gère les deux cas ici.
@@ -116,7 +125,7 @@ function normalizeChallenge(payload: unknown, language: PostRollContext['languag
   if (!raw || typeof raw !== 'object') return null;
   const record = raw as Record<string, unknown>;
   const challengeText = String(record.text || record.challenge || '').trim();
-  if (!challengeText) return null;
+  if (!challengeText || !isSimpleChallenge(challengeText)) return null;
 
   const rawIntensity = Number(record.intensity || 2);
   return {
@@ -150,7 +159,7 @@ export async function requestPostRollChallenge(context: PostRollContext): Promis
       body: JSON.stringify({
         operationId: `420dice_post_roll_${Date.now()}`,
         title: '420 Dice · gage après tirage',
-        objective: 'Créer un gage court et engageant directement inspiré du tirage terminé.',
+        objective: 'Créer un gage ultra-court, immédiat et directement inspiré du tirage terminé.',
         context: {
           id: '420-dice-game',
           label: '420 Dice Game',
@@ -167,7 +176,13 @@ export async function requestPostRollChallenge(context: PostRollContext): Promis
         authorizedResources: [],
         prompt: [
           'Retourne exactement un gage en JSON.',
-          'Le gage doit découler du tirage et être faisable en moins de deux minutes.',
+          'RÈGLE PRIORITAIRE : le joueur doit comprendre le gage au premier coup d’œil.',
+          'Le gage découle du tirage mais reste extrêmement simple.',
+          'Le texte contient une seule phrase, idéalement 6 à 15 mots, maximum 18 mots.',
+          'Une seule action OU une seule règle simple. Jamais plusieurs étapes.',
+          'Exécution immédiate : moins de 30 secondes, sauf une règle valable jusqu’au prochain lancer.',
+          'N’utilise pas « puis », « ensuite », « après avoir » ou de scénario à expliquer.',
+          'Le titre contient 2 à 4 mots.',
           'Évite humiliation, danger, harcèlement, contenu illégal et publication publique.',
           `Dés: ${context.dice.join(', ')}`,
           `Pack: ${context.packId}`,
