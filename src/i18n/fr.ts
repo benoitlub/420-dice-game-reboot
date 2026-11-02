@@ -58,7 +58,7 @@ export const fr = {
     haptic: 'Vibration', hapticDesc: 'Retour haptique lors des interactions',
     resetTutorial: 'Revoir le tutoriel', resetTutorialDesc: "Le tutoriel s'affichera au prochain lancement", resetTutorialDone: '✓ Tutoriel réinitialisé',
     resetStats: 'Réinitialiser les statistiques', resetStatsDesc: 'Remet les manches, trophées et scores à zéro', resetStatsDone: '✓ Statistiques effacées', confirmReset: 'Confirmer la réinitialisation',
-    themeDark: 'Mode Nuit', themeLight: 'Mode Jour', about: 'À propos',
+    themeDark: 'Mode Nuit', themeLight: 'Mode Jour', about: 'À propos', aboutGame: 'Un jeu de dés et de défis pour jouer ensemble.', aboutEngine: 'Moteur local du jeu.', aboutStudio: 'Une création du Feuch Institute.',
   },
   stats: {
     title: 'Statistiques', subtitle: "Tes performances locales — rien n'est envoyé nulle part.",
