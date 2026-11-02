@@ -97,7 +97,7 @@ function normalizeSuggestions(payload: unknown): ChallengeSuggestion[] {
   const parsed = parseMistralJson(payload);
   const raw = Array.isArray(parsed.suggestions) ? parsed.suggestions : [];
 
-  return raw.slice(0, 3).map((item, index) => {
+  return raw.slice(0, 3).map<ChallengeSuggestion>((item, index) => {
     const record = item && typeof item === 'object' ? item as Record<string, unknown> : {};
     return {
       id: String(record.id || `octopus-${Date.now()}-${index}`),
